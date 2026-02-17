@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, sans-serif;
+  
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-color: var(--border-color);
+}
+
+/* Custom variant for dark mode class strategy */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light Mode Palette */
+  --background: var(--color-slate-50);
+  --surface: #ffffff;
+  --primary: var(--color-emerald-600);
+  --secondary: var(--color-amber-500);
+  --text-primary: var(--color-slate-900);
+  --text-secondary: var(--color-slate-500);
+  --border-color: var(--color-slate-200);
+}
+
+.dark {
+  /* Dark Mode Palette */
+  --background: var(--color-slate-950);
+  --surface: var(--color-slate-900);
+  --primary: var(--color-emerald-500);
+  --secondary: var(--color-amber-400);
+  --text-primary: var(--color-slate-100);
+  --text-secondary: var(--color-slate-400);
+  --border-color: var(--color-slate-800);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
