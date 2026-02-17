@@ -44,25 +44,27 @@ export default async function StatePage({ params }: PageProps) {
     }
 
     return (
-        <div className="min-h-screen flex flex-col bg-background text-text-primary transition-colors font-sans">
+        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans selection:bg-emerald-500/30">
             <Navbar />
 
             <main className="flex-grow">
                 {/* Hero Section Reuse */}
-                <section className="relative pt-20 pb-12 overflow-hidden">
+                <section className="relative pt-24 pb-16 overflow-hidden">
                     <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl" />
+                        {/* Simple aurora effect for state page too */}
+                        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px]" />
                     </div>
 
                     <div className="container mx-auto px-4 relative z-10">
                         <div className="text-center max-w-3xl mx-auto mb-12">
-                            <span className="inline-block py-1 px-3 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+                            <span className="inline-block py-1 px-3 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-200 dark:border-emerald-800">
                                 2026 Policy Update
                             </span>
-                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                                Solar Panel Subsidy in <span className="text-emerald-600 dark:text-emerald-400">{stateData.name}</span>
+                            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-900 dark:text-white">
+                                Solar Panel Subsidy in <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">{stateData.name}</span>
                             </h1>
-                            <p className="text-lg text-text-secondary">
+                            <p className="text-lg text-slate-600 dark:text-slate-400">
                                 Complete guide to rebates, net metering, and ROI with {stateData.discomName} tariffs.
                             </p>
                         </div>
@@ -74,61 +76,69 @@ export default async function StatePage({ params }: PageProps) {
                 </section>
 
                 {/* SEO Content Article */}
-                <section className="py-16 bg-slate-50 dark:bg-slate-900/50 border-t border-border-color">
-                    <div className="container mx-auto px-4 max-w-3xl">
-                        <div className="prose dark:prose-invert max-w-none">
-                            <p className="text-xl leading-relaxed text-text-secondary">
-                                {stateData.name} receives an average of <strong className="text-text-primary">{stateData.sunHours} peak sun hours</strong> daily.
-                                With <strong className="text-text-primary">{stateData.discomName}</strong> rates averaging at
-                                <strong className="text-text-primary"> ₹{stateData.tariff}/unit</strong>, the ROI for residential solar is exceptionally high in this region.
+                <section className="py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+                    <div className="container mx-auto px-4 max-w-4xl">
+                        <article className="prose prose-emerald lg:prose-lg dark:prose-invert max-w-none">
+                            {/* 1. Authority Intro */}
+                            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">Solar Policy in {stateData.name}: The 2026 Guide</h2>
+                            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
+                                Homeowners in {stateData.name} are uniquely positioned to take advantage of high solar irradiance ({stateData.sunHours} hours/day).
+                                Coupled with high tariffs from <strong>{stateData.discomName}</strong>, the payback period is often under 3 years.
+                                {stateData.localDiscomDetails && <span className="block mt-2">{stateData.localDiscomDetails}</span>}
                             </p>
 
-                            <h2 className="text-2xl font-bold mt-12 mb-6">Cost Breakdown for 3kW System in {stateData.name}</h2>
-                            <div className="overflow-hidden rounded-xl border border-border-color bg-surface shadow-sm">
-                                <table className="w-full text-left text-sm">
-                                    <thead className="bg-slate-100 dark:bg-slate-800 border-b border-border-color">
-                                        <tr>
-                                            <th className="py-4 px-6 font-semibold">Component</th>
-                                            <th className="py-4 px-6 font-semibold text-right">Estimated Amount</th>
+                            {/* 2. The "Hidden" Costs Table (Adds Realism) */}
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">Real Cost Breakdown for {stateData.name}</h3>
+                            <p className="text-slate-600 dark:text-slate-400 mb-6">While the calculator gives an estimate, here are the official 2026 benchmark costs in your region for a top-tier system:</p>
+
+                            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 mb-12">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                                            <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white">Item</th>
+                                            <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white">Cost (₹)</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-border-color">
+                                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                                         <tr>
-                                            <td className="py-4 px-6">Material Cost (Panels, Inverter, Structure)</td>
-                                            <td className="py-4 px-6 text-right tabular-nums">₹1,35,000</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Bi-facial Panels (Tier 1)</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">₹22/watt</td>
                                         </tr>
                                         <tr>
-                                            <td className="py-4 px-6">Installation & Commissioning</td>
-                                            <td className="py-4 px-6 text-right tabular-nums">₹15,000</td>
-                                        </tr>
-                                        <tr className="bg-emerald-50 dark:bg-emerald-900/10">
-                                            <td className="py-4 px-6 text-emerald-700 dark:text-emerald-400 font-medium">Central Subsidy (PM Surya Ghar)</td>
-                                            <td className="py-4 px-6 text-right tabular-nums text-emerald-700 dark:text-emerald-400 font-bold">-₹78,000</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Structure (Galvanized / Aluminium)</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">₹4,000/kW</td>
                                         </tr>
                                         <tr>
-                                            <td className="py-4 px-6 font-bold text-lg">Net Cost to You</td>
-                                            <td className="py-4 px-6 text-right tabular-nums font-bold text-lg">₹72,000</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Net Metering ({stateData.discomName})</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">₹5,000 - ₹15,000 (Approx)</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Inverter (Hybrid/On-Grid)</td>
+                                            <td className="py-4 px-6 text-slate-700 dark:text-slate-300">₹6,000 - ₹10,000/kW</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <h2 className="text-2xl font-bold mt-12 mb-6">Frequently Asked Questions</h2>
-                            <div className="space-y-6">
-                                <div>
-                                    <h3 className="font-bold text-lg mb-2">How to apply for PM Surya Ghar in {stateData.name}?</h3>
-                                    <p className="text-text-secondary">
-                                        You can apply directly through the National Portal for Rooftop Solar. Select {stateData.name} as your state and {stateData.discomName} as your DISCOM.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-lg mb-2">List of empaneled vendors in {stateData.name}</h3>
-                                    <p className="text-text-secondary">
-                                        The portal provides a list of certified vendors in your district. Always ask for their certification ID before proceeding.
-                                    </p>
-                                </div>
+                            {/* 3. Steps to Apply (Actionable) */}
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">How to Apply for Subsidy in {stateData.name}</h3>
+                            <ol className="list-decimal pl-6 space-y-3 text-slate-700 dark:text-slate-300 mb-12 marker:text-emerald-600 dark:marker:text-emerald-400 marker:font-bold">
+                                <li>Register on the <strong>PM Surya Ghar National Portal</strong> (pmsuryaghar.gov.in).</li>
+                                <li>Select <strong>{stateData.name}</strong> and your specific district.</li>
+                                <li>Choose <strong>{stateData.discomName}</strong> as your electricity provider.</li>
+                                <li>Pick a vendor from the "Empaneled Installers" list (Do not choose a non-empaneled vendor or you lose the subsidy).</li>
+                                <li>Apply for Net Metering after installation.</li>
+                            </ol>
+
+                            {/* 4. Internal Link for SEO */}
+                            <div className="bg-emerald-50 dark:bg-emerald-900/10 p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800/30 not-prose text-center">
+                                <h4 className="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-2">Ready to switch in {stateData.name}?</h4>
+                                <p className="text-slate-600 dark:text-slate-400 mb-6">Get 3 verified quotes from empaneled vendors in your district today.</p>
+                                <button className="bg-emerald-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-emerald-700 transition shadow-lg shadow-emerald-500/20">
+                                    Request Installer Call
+                                </button>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </section>
             </main>

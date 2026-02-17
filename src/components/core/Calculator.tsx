@@ -5,8 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
     MapPin,
     IndianRupee,
-    Sun,
-    Moon,
     SwitchCamera,
     ShieldCheck,
     ChevronsUpDown,
@@ -81,16 +79,7 @@ export function Calculator() {
                     </div>
                 </div>
 
-                {/* Theme Toggle within Widget */}
-                {mounted && (
-                    <button
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                        className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-text-primary"
-                        aria-label="Toggle widget theme"
-                    >
-                        {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                    </button>
-                )}
+
             </div>
 
             {/* Input Section */}
