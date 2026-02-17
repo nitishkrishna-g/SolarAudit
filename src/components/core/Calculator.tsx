@@ -66,7 +66,7 @@ export function Calculator() {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto relative rounded-3xl overflow-hidden glass-panel border border-border-color shadow-2xl backdrop-blur-md bg-white/50 dark:bg-slate-900/50 transition-colors">
+        <div className="w-full max-w-md mx-auto relative rounded-3xl overflow-hidden glass-panel border border-slate-200 dark:border-slate-800 shadow-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl transition-all">
 
             {/* Header */}
             <div className="p-6 border-b border-border-color flex items-center justify-between">
@@ -227,6 +227,14 @@ export function Calculator() {
                                         {formatLakhs(result.lifetimeSavings)}
                                     </h3>
                                     <p className="text-xs text-text-secondary">over 25 years with a {result.systemSize}kW system</p>
+                                    <div className="pt-2">
+                                        <span
+                                            className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium cursor-help"
+                                            title="Based on 0.82kg CO2/kWh (CEA Data)"
+                                        >
+                                            🌱 {result.treesSaved} Trees Saved
+                                        </span>
+                                    </div>
                                 </div>
 
                                 {/* Breakdown Grid */}
@@ -259,10 +267,11 @@ export function Calculator() {
 
                                 {/* CTA */}
                                 <Button
-                                    className="w-full h-14 text-lg bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/20"
+                                    className="w-full h-auto py-4 text-lg bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/20 whitespace-normal text-balance leading-tight"
                                     onClick={() => setIsLeadModalOpen(true)}
                                 >
-                                    Get 3 Verified Installer Quotes for {selectedState.name}
+                                    Get 3 Verified Installer Quotes <span className="hidden sm:inline">for {selectedState.name}</span>
+                                    <span className="sm:hidden">Now</span>
                                 </Button>
                                 <p className="text-center text-xs text-text-secondary">
                                     100% Free. No Spam. Valid for 24 hours.

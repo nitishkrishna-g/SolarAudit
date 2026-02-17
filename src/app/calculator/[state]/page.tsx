@@ -6,9 +6,9 @@ import { solarData } from "@/data/solarData";
 import { Metadata } from "next";
 
 interface PageProps {
-    params: {
+    params: Promise<{
         state: string;
-    };
+    }>;
 }
 
 // Generate static params for all known states
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
 // Dynamic Metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { state: stateSlug } = params;
+    const { state: stateSlug } = await params;
     const stateData = solarData.find((s) => s.slug === stateSlug);
 
     if (!stateData) {
@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
-export default function StatePage({ params }: PageProps) {
-    const { state: stateSlug } = params;
+export default async function StatePage({ params }: PageProps) {
+    const { state: stateSlug } = await params;
     const stateData = solarData.find((s) => s.slug === stateSlug);
 
     if (!stateData) {

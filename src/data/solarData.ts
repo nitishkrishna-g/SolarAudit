@@ -91,4 +91,17 @@ export const solarData: StateData[] = [
             rateAdditionalkW: 18000,
         },
     },
+    {
+        slug: "india", // Fallback slug
+        name: "India (General)",
+        tariff: 7.0, // National Average
+        sunHours: 5.0,
+        discomName: "State DISCOM",
+        panelOrientation: "South",
+        subsidyParams: {
+            cap: 78000,
+            rateUpTo2kW: 30000,
+            rateAdditionalkW: 18000,
+        },
+    },
 ];

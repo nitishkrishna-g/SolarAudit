@@ -1,22 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
-import mongoose from "mongoose";
-
-// Define Schema here to avoid creating a separate model file for a simple app
-const LeadSchema = new mongoose.Schema(
-    {
-        name: String,
-        phone: String,
-        city: String,
-        state: String,
-        billAmount: Number,
-        createdAt: { type: Date, default: Date.now },
-    },
-    { strict: false }
-);
-
-// Prevent OverwriteModelError
-const Lead = mongoose.models.Lead || mongoose.model("Lead", LeadSchema);
+import Lead from "@/models/Lead";
 
 export async function POST(request: Request) {
     try {

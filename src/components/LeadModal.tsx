@@ -1,9 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-
-
+import { useState, useEffect } from "react";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -21,6 +18,16 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
     const [step, setStep] = useState<"form" | "success">("form");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+
+    // Auto-close on success
+    useEffect(() => {
+        if (step === "success") {
+            const timer = setTimeout(() => {
+                onClose();
+            }, 3000); // Close after 3 seconds
+            return () => clearTimeout(timer);
+        }
+    }, [step, onClose]);
 
     const [formData, setFormData] = useState({
         name: "",
