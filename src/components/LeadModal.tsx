@@ -42,7 +42,11 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
 
         // Validation
         // 1. Honeypot check
-        if (botTrap.length > 0) return;
+        if (botTrap.length > 0) {
+            // FAKE SUCCESS: Make the bot think it won.
+            setStep("success");
+            return;
+        }
 
         // 2. Phone validation (Indian mobile standard)
         const indianPhoneRegex = /^[6-9]\d{9}$/;
@@ -109,7 +113,7 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
                             <div>
                                 <label className="text-sm font-medium text-text-secondary">Phone Number</label>
                                 <div className="relative">
-                                    <span className="absolute left-3 top-3 text-text-secondary text-sm">+91</span>
+                                    <span className="absolute left-3 top-0 bottom-0 flex items-center text-text-secondary text-sm pointer-events-none translate-y-[1px]">+91</span>
                                     <Input
                                         required
                                         type="tel"

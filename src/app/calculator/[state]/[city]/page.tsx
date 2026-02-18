@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import { Fireflies } from "@/components/ui/fireflies";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { TrendingUp, ShieldCheck, Zap, Sun, Award, Banknote } from "lucide-react";
+import { CityCTA } from "@/components/core/CityCTA";
 
 interface PageProps {
     params: Promise<{
@@ -219,9 +220,9 @@ export default async function CityPage({ params }: PageProps) {
                                         <p className="text-emerald-100 mb-8 max-w-lg mx-auto">
                                             We have a network of verified <strong>{stateData.discomName}</strong> empaneled solar partners in your area.
                                         </p>
-                                        <button className="bg-white text-emerald-700 px-8 py-3.5 rounded-xl font-bold hover:bg-emerald-50 transition shadow-lg w-full md:w-auto">
-                                            Get 3 {city} Installer Quotes
-                                        </button>
+                                        <div className="w-full md:w-auto">
+                                            <CityCTA city={city} state={stateData.name} />
+                                        </div>
                                     </div>
                                 </div>
                             </article>
