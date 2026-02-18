@@ -8,9 +8,12 @@ import {
     SwitchCamera,
     ShieldCheck,
     ChevronsUpDown,
-    Check
+    Check,
+    ShoppingCart,
+    ExternalLink
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Slider } from "@/components/ui/Slider";
@@ -19,13 +22,14 @@ import { calculateSolar } from "@/utils/calculator";
 import { cn } from "@/lib/utils";
 import { LeadModal } from "@/components/LeadModal";
 
-export function Calculator() {
+export function Calculator({ onCalculationComplete }: { onCalculationComplete?: () => void }) {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     // Form State
     const [selectedState, setSelectedState] = useState<StateData | null>(null);
     const [billAmount, setBillAmount] = useState(4500);
+    const [roofArea, setRoofArea] = useState(500); // Default 500 sq ft
     const [roofType, setRoofType] = useState<"concrete" | "tiled">("concrete");
 
     // Combobox State
@@ -44,6 +48,14 @@ export function Calculator() {
         if (!selectedState) return null;
         return calculateSolar(billAmount, selectedState, roofType);
     }, [selectedState, billAmount, roofType]);
+
+    useEffect(() => {
+        if (result && onCalculationComplete) {
+            onCalculationComplete();
+        }
+    }, [result, onCalculationComplete]);
+
+
 
     useEffect(() => {
         setMounted(true);
@@ -169,6 +181,30 @@ export function Calculator() {
                     </div>
                 </div>
 
+                {/* Roof Area Slider */}
+                <div className="space-y-4">
+                    <div className="flex justify-between items-end">
+                        <label className="text-sm font-medium text-text-secondary">Available Roof Area</label>
+                        <div className="text-right">
+                            <span className="text-2xl font-bold text-text-primary tabular-nums tracking-tight">
+                                {roofArea} sq ft
+                            </span>
+                        </div>
+                    </div>
+                    <Slider
+                        min={100}
+                        max={5000}
+                        step={50}
+                        value={roofArea}
+                        onChange={setRoofArea}
+                        className="w-full"
+                    />
+                    <div className="flex justify-between text-xs text-text-secondary">
+                        <span>100 sq ft</span>
+                        <span>5,000+ sq ft</span>
+                    </div>
+                </div>
+
                 {/* Roof Type Toggle */}
                 <div className="space-y-3">
                     <label className="text-sm font-medium text-text-secondary block">Roof Type</label>
@@ -208,6 +244,13 @@ export function Calculator() {
                             className="overflow-hidden"
                         >
                             <div className="pt-6 border-t border-border-color space-y-6">
+                                {/* Warning for Roof Area */}
+                                {(result.systemSize * 100) > roofArea && (
+                                    <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-sm text-red-600 dark:text-red-400">
+                                        <strong>⚠️ Insufficient Roof Area</strong>
+                                        <p>You need ~{result.systemSize * 100} sq ft for a {result.systemSize}kW system, but you only have {roofArea} sq ft.</p>
+                                    </div>
+                                )}
 
                                 {/* Big Number */}
                                 <div className="text-center space-y-1">
@@ -255,16 +298,27 @@ export function Calculator() {
                                 </div>
 
                                 {/* CTA */}
-                                <Button
-                                    className="w-full h-auto py-4 text-lg bg-emerald-600 hover:bg-emerald-700 shadow-lg shadow-emerald-500/20 whitespace-normal text-balance leading-tight"
-                                    onClick={() => setIsLeadModalOpen(true)}
-                                >
-                                    Get 3 Verified Installer Quotes <span className="hidden sm:inline">for {selectedState.name}</span>
-                                    <span className="sm:hidden">Now</span>
-                                </Button>
-                                <p className="text-center text-xs text-text-secondary">
-                                    100% Free. No Spam. Valid for 24 hours.
-                                </p>
+
+                                {/* CTA */}
+                                <div className="grid grid-cols-2 gap-3">
+                                    <Button
+                                        variant="outline"
+                                        className="h-auto py-3 text-sm whitespace-normal"
+                                        onClick={() => setIsLeadModalOpen(true)}
+                                    >
+                                        Get Installer Quote
+                                    </Button>
+                                    <Link
+                                        href="/shop"
+                                        className="inline-flex items-center justify-center whitespace-nowrap rounded-xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-auto py-3 text-sm bg-emerald-600 hover:bg-emerald-700 whitespace-normal text-white px-6 shadow-lg shadow-emerald-500/20"
+                                    >
+                                        Shop Solar Components
+                                        <ShoppingCart className="w-3 h-3 ml-1 inline" />
+                                    </Link>
+                                    <p className="col-span-2 text-center text-[10px] text-slate-400">
+                                        Free quote valid for 24 hours
+                                    </p>
+                                </div>
                             </div>
                         </motion.div>
                     )}

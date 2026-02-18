@@ -47,10 +47,19 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-slate-200 dark:border-slate-800 mt-16 pt-8 text-center">
-                    <p className="text-slate-500 dark:text-slate-500 text-sm">
-                        &copy; {new Date().getFullYear()} SolarAudit. All rights reserved. Data sourced from MNRE, DISCOMs, and State Nodal Agencies.
+                <div className="border-t border-slate-200 dark:border-slate-800 mt-16 pt-8 text-center space-y-4">
+                    <p className="text-slate-500 dark:text-slate-500 text-xs max-w-4xl mx-auto">
+                        SolarAudit is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.in.
                     </p>
+                    <div className="flex justify-center gap-6 items-center">
+                        <Link href="/privacy-policy" className="text-sm text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400">
+                            Privacy Policy
+                        </Link>
+                        <span className="text-slate-300 dark:text-slate-700">|</span>
+                        <p className="text-slate-500 dark:text-slate-500 text-sm">
+                            &copy; {new Date().getFullYear()} SolarAudit. All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>

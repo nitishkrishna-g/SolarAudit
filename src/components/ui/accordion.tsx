@@ -22,7 +22,11 @@ const AccordionContext = React.createContext<{
 export function Accordion({ children, className, type = "single", collapsible = true }: AccordionProps) {
     const [activeItem, setActiveItem] = React.useState<string | null>(null);
 
-    const toggleItem = (value: string) => {
+    const toggleItem = (value: string | null) => {
+        if (value === null) {
+            setActiveItem(null);
+            return;
+        }
         setActiveItem((prev) => (prev === value && collapsible ? null : value));
     };
 

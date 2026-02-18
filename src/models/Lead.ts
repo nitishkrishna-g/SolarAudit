@@ -7,6 +7,8 @@ const LeadSchema = new mongoose.Schema(
         city: String,
         state: String,
         billAmount: Number,
+        roofOwnership: String, // "Owned" | "Rented"
+        roofArea: Number, // sq ft
         createdAt: { type: Date, default: Date.now },
     },
     { strict: false }

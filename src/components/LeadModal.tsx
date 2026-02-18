@@ -33,6 +33,7 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
         name: "",
         phone: "",
         city: "",
+        roofOwnership: "", // default empty
     });
     const [botTrap, setBotTrap] = useState(""); // Honeypot state
 
@@ -136,6 +137,19 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
                                     value={formData.city}
                                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                                 />
+                            </div>
+                            <div>
+                                <label className="text-sm font-medium text-text-secondary">Roof Ownership</label>
+                                <select
+                                    required
+                                    className="flex h-10 w-full rounded-md border border-input bg-white dark:bg-slate-900 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-slate-900 dark:text-white border-slate-200 dark:border-slate-800"
+                                    value={formData.roofOwnership}
+                                    onChange={(e) => setFormData({ ...formData, roofOwnership: e.target.value })}
+                                >
+                                    <option value="" disabled className="bg-white dark:bg-slate-900 text-slate-500">Select Ownership</option>
+                                    <option value="Owned" className="bg-white dark:bg-slate-900">Owned</option>
+                                    <option value="Rented" className="bg-white dark:bg-slate-900">Rented</option>
+                                </select>
                             </div>
                         </div>
 

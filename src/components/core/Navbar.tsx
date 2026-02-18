@@ -24,6 +24,15 @@ export function Navbar() {
                     <span className="font-bold text-lg tracking-tight">SolarAudit</span>
                 </Link>
 
+                <div className="hidden md:flex items-center gap-8">
+                    <Link href="/shop" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        Shop
+                    </Link>
+                    <Link href="/guides" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        Guides
+                    </Link>
+                </div>
+
                 <div className="flex items-center gap-4">
                     {mounted && (
                         <Button

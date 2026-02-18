@@ -156,76 +156,75 @@ export default async function CityPage({ params }: PageProps) {
 
                 {/* SEO Content Article (Styled) */}
                 <section className="py-16 bg-slate-50 dark:bg-slate-950">
-                    <div className="container mx-auto px-4 max-w-4xl">
-                        <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200 dark:border-slate-800">
-                            <article className="prose prose-emerald lg:prose-lg dark:prose-invert max-w-none">
-                                {/* The "Hidden" Costs Table (Styled) */}
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Solar Cost Breakdown for {city}</h3>
+                    <div className="container mx-auto px-4 max-w-6xl">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            {/* Main Content */}
+                            <div className="lg:col-span-2 bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200 dark:border-slate-800">
+                                <article className="prose prose-emerald lg:prose-lg dark:prose-invert max-w-none">
+                                    {/* AdSense In-Article */}
+                                    <div className="w-full h-[100px] bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 dark:border-slate-700 rounded mb-8 flex items-center justify-center text-slate-400 text-sm">
+                                        AdSense In-Article
+                                    </div>
 
-                                <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 mb-12 shadow-sm">
-                                    <table className="w-full text-left border-collapse my-0">
-                                        <thead>
-                                            <tr className="bg-slate-50 dark:bg-slate-800/50">
-                                                <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800">Component</th>
-                                                <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800">Details</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                                            <tr>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Provider</td>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300 font-medium">{stateData.discomName}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Avg. Sun Hours</td>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">{stateData.sunHours} Hours/Day</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Subsidy Cap</td>
-                                                <td className="py-4 px-6 text-emerald-600 dark:text-emerald-400 font-bold">₹{stateData.subsidyParams.cap.toLocaleString()}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Avg. ROI Period</td>
-                                                <td className="py-4 px-6 text-slate-700 dark:text-slate-300">3 - 4 Years</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Solar Cost Breakdown for {city}</h3>
 
-                                {/* Steps to Apply (Actionable) */}
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Installation Steps</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose mb-12">
-                                    {[
-                                        { title: "Get Quote", desc: `Request a custom quote for your ${city} home.` },
-                                        { title: "Site Survey", desc: "Installer checks your roof shadow and fastens structure." },
-                                        { title: "Subsidy Apply", desc: "We help you apply on the PM Surya Ghar portal." },
-                                        { title: "Net Metering", desc: `Official meter exchange with ${stateData.discomName}.` },
-                                    ].map((step, idx) => (
-                                        <div key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                                            <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-bold text-sm shrink-0">
-                                                {idx + 1}
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-slate-900 dark:text-white text-sm">{step.title}</h4>
-                                                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">{step.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                                    <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 mb-12 shadow-sm">
+                                        <table className="w-full text-left border-collapse my-0">
+                                            <thead>
+                                                <tr className="bg-slate-50 dark:bg-slate-800/50">
+                                                    <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800">Component</th>
+                                                    <th className="py-4 px-6 font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800">Details</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                                                <tr>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Provider</td>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300 font-medium">{stateData.discomName}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Avg. Sun Hours</td>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">{stateData.sunHours} Hours/Day</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Equipment</td>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">
+                                                        <a href="https://www.amazon.in/s?k=solar+panels&tag=solaraudit-21" target="_blank" rel="nofollow" className="text-emerald-600 hover:underline">Panels</a>,{" "}
+                                                        <a href="https://www.amazon.in/s?k=solar+inverter&tag=solaraudit-21" target="_blank" rel="nofollow" className="text-emerald-600 hover:underline">Inverter</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">Est. Material Cost</td>
+                                                    <td className="py-4 px-6 text-slate-700 dark:text-slate-300">~₹60,000 per kW</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                {/* Call to Action Card */}
-                                <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 p-8 rounded-2xl text-center shadow-xl shadow-emerald-500/20 not-prose relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-                                    <div className="relative z-10">
-                                        <h4 className="text-2xl font-bold text-white mb-2">Ready to switch in {city}?</h4>
-                                        <p className="text-emerald-100 mb-8 max-w-lg mx-auto">
-                                            We have a network of verified <strong>{stateData.discomName}</strong> empaneled solar partners in your area.
-                                        </p>
-                                        <div className="w-full md:w-auto">
-                                            <CityCTA city={city} state={stateData.name} />
+                                    {/* Call to Action Card: DIY Options */}
+                                    <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl text-center shadow-xl not-prose relative overflow-hidden text-white">
+                                        <div className="relative z-10">
+                                            <h4 className="text-2xl font-bold mb-2">Prefer to do it yourself?</h4>
+                                            <p className="text-slate-300 mb-8 max-w-lg mx-auto">
+                                                Buy components online and hire a local electrician. Save up to 30% on installer commissions.
+                                            </p>
+                                            <a
+                                                href="/shop"
+                                                className="inline-block bg-white text-slate-900 font-bold py-3 px-8 rounded-lg hover:bg-emerald-50 transition-colors"
+                                            >
+                                                Browse Solar Components
+                                            </a>
                                         </div>
                                     </div>
+                                </article>
+                            </div>
+
+                            {/* Sidebar */}
+                            <div className="space-y-8">
+                                {/* AdSense Sidebar Skyscraper */}
+                                <div className="w-full h-[600px] bg-slate-100 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded flex items-center justify-center text-slate-400 text-sm sticky top-24">
+                                    AdSense Sidebar (160x600 or 300x600)
                                 </div>
-                            </article>
+                            </div>
                         </div>
                     </div>
                 </section>

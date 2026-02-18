@@ -11,8 +11,13 @@ import { motion, Variants } from "framer-motion";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { solarData } from "@/data/solarData";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { AmazonBounty } from "@/components/ads/AmazonBounty";
+
+import { useState } from "react";
 
 export default function Home() {
+  const [isCalculatorExpanded, setIsCalculatorExpanded] = useState(false);
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -35,17 +40,26 @@ export default function Home() {
       <Fireflies />
 
       <main>
+
+
         {/* SECTION 1: HERO (Modernized with Aurora) */}
-        <section className="relative pt-24 pb-32 overflow-hidden">
+        <section className="relative pb-20 pt-0 overflow-hidden">
           <div className="absolute inset-0 z-0 pointer-events-none">
             {/* The "Aurora" Effect - Static & Dominant */}
             <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/30 blur-[100px]" />
             <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/20 blur-[100px]" />
           </div>
 
-          <div className="container relative z-10 px-4 mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          {/* AD ZONE 1: LEADERBOARD (Integrated) */}
+          <div className="container relative z-20 px-4 pt-6 pb-6 mx-auto flex justify-center">
+            <div className="w-full max-w-[728px] min-h-[90px] bg-white/50 dark:bg-slate-900/50 backdrop-blur-md rounded-xl flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 text-xs border border-white/20 dark:border-white/10 shadow-sm">
+              <span className="uppercase tracking-widest opacity-70 font-semibold">Advertisement</span>
+            </div>
+          </div>
+
+          <div className="container relative z-10 px-4 mx-auto flex flex-col lg:flex-row gap-12 items-center justify-center">
+            <div className="space-y-6 text-center lg:text-left max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mx-auto lg:mx-0">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -65,8 +79,204 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-8 lg:mt-0">
-              <Calculator />
+            <div className="flex flex-col gap-4 pt-2 w-full max-w-xs shrink-0">
+              <Link
+                href="#calculator-section"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-xl text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-14 px-8 shadow-lg shadow-emerald-500/20 w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+              >
+                Calculate Savings
+              </Link>
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-xl text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-14 px-8 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 w-full text-slate-900 dark:text-slate-50"
+              >
+                Shop Solar Gear
+              </Link>
+            </div>
+          </div>
+
+
+        </section>
+
+        {/* SECTION 1.5: CALCULATOR (Dedicated Section) */}
+
+
+        {/* SECTION 1.5: CALCULATOR (Dedicated Section) */}
+        <section className="py-20 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 relative z-10" id="calculator-section">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* LEFT COLUMN: Content & Buying Links (Ads) */}
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+                    Calculate Your <span className="text-emerald-600 dark:text-emerald-400">Potential Savings</span>
+                  </h2>
+                  <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Stop guessing. Our advanced calculator uses real-time tariff data and the 2026 PM Surya Ghar subsidy rates to give you an accurate ROI estimate.
+                  </p>
+                  <ul className="space-y-3 pt-2">
+                    {[
+                      "Instant Subsidy Calculation",
+                      "Monthly Savings Estimation",
+                      "ROI & Payback Period",
+                      "System Size Recommendation"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* BUYING LINKS / ADS: REPLACED WITH PRODUCT */}
+                <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Best Seller</span>
+                    <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">Save 38%</span>
+                  </div>
+
+                  <a
+                    href="https://www.amazon.in/dp/B00L4R6E96?tag=solaraudit-21"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-24 h-24 bg-white rounded-lg p-2 border border-slate-100 flex items-center justify-center shrink-0">
+                      <img src="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg" alt="Solar Inverter" className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 dark:text-white leading-tight group-hover:text-emerald-600 transition-colors">
+                        Luminous NXG 1400 Solar Inverter (12V)
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1 mb-2">
+                        <div className="flex text-amber-400">
+                          <span className="text-xs">★★★★☆</span>
+                        </div>
+                        <span className="text-xs text-slate-500">(2.4k reviews)</span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-bold text-slate-900 dark:text-white">₹9,500</span>
+                        <span className="text-sm text-slate-400 line-through">₹16,500</span>
+                      </div>
+                      <div className="mt-3 text-xs font-bold text-center text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-1.5 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/20 transition-colors w-full">
+                        Check Price on Amazon
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                {/* DYNAMIC PRODUCT EXPANSION */}
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: isCalculatorExpanded ? "auto" : 0, opacity: isCalculatorExpanded ? 1 : 0 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-4 space-y-4">
+                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm uppercase tracking-wider">
+                      <Zap className="w-4 h-4" /> Recommended Add-ons
+                    </div>
+                    {/* Product 2: Cleaning Kit */}
+                    <a
+                      href="https://www.amazon.in/dp/B09X5K6G3T?tag=solaraudit-21"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
+                    >
+                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
+                        <img src="https://m.media-amazon.com/images/I/51wQge-zWlL._SX522_.jpg" alt="Cleaning Kit" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
+                          Solar Panel Cleaning Kit (Brush + Pole)
+                        </h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-emerald-600 font-bold text-sm">₹1,499</span>
+                          <span className="text-slate-400 text-xs line-through">₹2,999</span>
+                          <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] px-1.5 py-0.5 rounded">50% OFF</span>
+                        </div>
+                      </div>
+                    </a>
+
+                    {/* Product 3: Solar Battery */}
+                    <a
+                      href="https://www.amazon.in/d/B00L4R6E96?tag=solaraudit-21"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
+                    >
+                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
+                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Battery" alt="Solar Battery" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
+                          Luminous Red Charge RC 18000 150 Ah
+                        </h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-emerald-600 font-bold text-sm">₹14,500</span>
+                          <span className="text-slate-400 text-xs line-through">₹22,000</span>
+                        </div>
+                      </div>
+                    </a>
+
+                    {/* Product 4: Garden Lights */}
+                    <a
+                      href="https://www.amazon.in/s?k=solar+garden+lights&tag=solaraudit-21"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
+                    >
+                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
+                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Garden+Lights" alt="Garden Lights" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
+                          Solar Garden Lights (Pack of 4)
+                        </h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-emerald-600 font-bold text-sm">₹899</span>
+                          <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] px-1.5 py-0.5 rounded">Best Seller</span>
+                        </div>
+                      </div>
+                    </a>
+
+                    {/* Product 5: Smart Meter */}
+                    <a
+                      href="https://www.amazon.in/s?k=smart+energy+meter&tag=solaraudit-21"
+                      target="_blank"
+                      rel="nofollow noopener"
+                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
+                    >
+                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
+                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Smart+Meter" alt="Smart Meter" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
+                          Smart Wi-Fi Energy Meter (Tuya App)
+                        </h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-emerald-600 font-bold text-sm">₹2,299</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* RIGHT COLUMN: Calculator */}
+              <div className="w-full max-w-xl mx-auto lg:ml-auto sticky top-24">
+                <Calculator onCalculationComplete={() => setIsCalculatorExpanded(true)} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* AD ZONE 2: SECTION BREAK */}
+        <section className="bg-slate-50 dark:bg-slate-950 py-8 flex justify-center border-b border-slate-200 dark:border-slate-800">
+          <div className="container mx-auto px-4 flex justify-center">
+            <div className="w-full max-w-[728px] min-h-[90px] bg-slate-100 dark:bg-slate-900 rounded flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 text-xs">
+              <span className="uppercase tracking-widest opacity-50">Sponsored</span>
             </div>
           </div>
         </section>
@@ -85,32 +295,6 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {['Pune', 'Bangalore', 'Mumbai', 'Delhi', 'Chennai', 'Ahmedabad'].map((city) => {
-                // Find parent state for the link
-                const parentState = solarData.find(s => s.cities?.includes(city === 'Bangalore' ? 'Bengaluru' : city));
-                // Handle the Bangalore/Bengaluru naming (using the display name 'Bangalore' for the card but matching 'Bengaluru' in data if needed)
-                // Actually, let's just use the updated names from key cities we know exist in data
-                // Pune, Mumbai, Nagpur are in Maharashtra
-                // Bengaluru is in Karnataka
-                // New Delhi is in Delhi
-                // Chennai is in Tamil Nadu
-                // Ahmedabad is in Gujarat
-
-                // Let's hardcode the accurate links for these popular ones to be safe and fast
-                const linkMap: Record<string, string> = {
-                  'Pune': '/calculator/maharashtra/pune',
-                  'Mumbai': '/calculator/maharashtra/mumbai',
-                  'Bengaluru': '/calculator/karnataka/bengaluru',
-                  'New Delhi': '/calculator/delhi/new-delhi',
-                  'Chennai': '/calculator/tamil-nadu/chennai',
-                  'Ahmedabad': '/calculator/gujarat/ahmedabad'
-                };
-
-                const displayCity = city === 'Bangalore' ? 'Bengaluru' : city; // UI preference? Let's use the one in the map key for display if we iterate the map keys.
-
-                return null;
-              })}
-
               {/* Manual Grid for Top Cities to ensure they map correctly to my new data structure */}
               {[
                 { name: 'Pune', url: '/calculator/maharashtra/pune', state: 'Maharashtra' },
@@ -141,7 +325,7 @@ export default function Home() {
         {/* SECTION 2: THE "AFFILIATE" REVENUE GRID */}
         <section className="py-12 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 relative z-10">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-8 text-center">Essential Gear for Solar Owners</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center text-slate-900 dark:text-white">Essential Gear for Solar Owners</h2>
             <AffiliateGrid />
           </div>
         </section>
@@ -356,6 +540,6 @@ export default function Home() {
         </section>
       </main>
       <Footer />
-    </div>
+    </div >
   );
 }
