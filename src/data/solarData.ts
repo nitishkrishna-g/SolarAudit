@@ -6,6 +6,7 @@ export interface StateData {
     discomName: string;
     localDiscomDetails: string; // New field for SEO
     panelOrientation: string;
+    cities: string[]; // Added for Programmatic SEO
     subsidyParams: {
         cap: number; // Max subsidy amount
         rateUpTo2kW: number; // Subsidy per kW up to 2kW
@@ -22,6 +23,7 @@ export const solarData: StateData[] = [
         discomName: "UPPCL",
         localDiscomDetails: "UPPCL's residential tariffs are among the highest in North India.",
         panelOrientation: "South",
+        cities: ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Varanasi", "Meerut", "Prayagraj", "Noida", "Bareilly"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -36,6 +38,7 @@ export const solarData: StateData[] = [
         discomName: "MSEDCL",
         localDiscomDetails: "MSEDCL consumers face steep slab-wise tariff hikes.",
         panelOrientation: "South",
+        cities: ["Mumbai", "Pune", "Nagpur", "Nashik", "Thane", "Aurangabad", "Solapur", "Amravati", "Kolhapur"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -50,6 +53,7 @@ export const solarData: StateData[] = [
         discomName: "BESCOM",
         localDiscomDetails: "BESCOM rates have seen a significant hike recently.",
         panelOrientation: "South",
+        cities: ["Bengaluru", "Mysuru", "Hubballi", "Mangaluru", "Belagavi", "Davangere", "Ballari", "Vijayapura", "Shivamogga"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -64,6 +68,7 @@ export const solarData: StateData[] = [
         discomName: "GUVNL",
         localDiscomDetails: "GUVNL allows for excellent solar generation availability.",
         panelOrientation: "South",
+        cities: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Junagadh", "Gandhinagar"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -78,6 +83,7 @@ export const solarData: StateData[] = [
         discomName: "BSES",
         localDiscomDetails: "BSES supports net metering for residential users effectively.",
         panelOrientation: "South",
+        cities: ["New Delhi", "Dwarka", "Rohini", "Saket", "Vasant Kunj", "Lajpat Nagar", "Karol Bagh"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -92,6 +98,7 @@ export const solarData: StateData[] = [
         discomName: "TANGEDCO",
         localDiscomDetails: "TANGEDCO grid availability encourages solar adoption.",
         panelOrientation: "South",
+        cities: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli", "Tiruppur", "Erode", "Vellore"],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,
@@ -106,6 +113,7 @@ export const solarData: StateData[] = [
         discomName: "State DISCOM",
         localDiscomDetails: "State DISCOMs generally support net metering policies.",
         panelOrientation: "South",
+        cities: [],
         subsidyParams: {
             cap: 78000,
             rateUpTo2kW: 30000,

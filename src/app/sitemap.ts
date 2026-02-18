@@ -11,6 +11,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }))
 
+    const cityUrls = solarData.flatMap((state) =>
+        (state.cities || []).map((city) => ({
+            url: `${baseUrl}/calculator/${state.slug}/${city.toLowerCase().replace(/ /g, '-')}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        }))
+    )
+
     return [
         {
             url: baseUrl,
@@ -19,5 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         ...stateUrls,
+        ...cityUrls,
     ]
 }

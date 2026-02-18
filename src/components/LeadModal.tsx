@@ -34,15 +34,20 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
         phone: "",
         city: "",
     });
+    const [botTrap, setBotTrap] = useState(""); // Honeypot state
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
 
         // Validation
-        const phoneRegex = /^[0-9]{10}$/;
-        if (!phoneRegex.test(formData.phone)) {
-            setError("Please enter a valid 10-digit phone number.");
+        // 1. Honeypot check
+        if (botTrap.length > 0) return;
+
+        // 2. Phone validation (Indian mobile standard)
+        const indianPhoneRegex = /^[6-9]\d{9}$/;
+        if (!indianPhoneRegex.test(formData.phone)) {
+            setError("Please enter a valid 10-digit Indian mobile number starting with 6-9");
             return;
         }
         if (!formData.name || !formData.city) {
@@ -70,10 +75,20 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} >
             <div className="p-6">
                 {step === "form" ? (
                     <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Honeypot Field (Hidden) */}
+                        <input
+                            type="text"
+                            name="website_url"
+                            style={{ display: 'none' }}
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={botTrap}
+                            onChange={(e) => setBotTrap(e.target.value)}
+                        />
                         <div className="text-center mb-6">
                             <h3 className="text-xl font-bold text-text-primary">Get Verified Quotes</h3>
                             <p className="text-sm text-text-secondary">
@@ -154,6 +169,6 @@ export function LeadModal({ isOpen, onClose, state, billAmount }: LeadModalProps
                     </div>
                 )}
             </div>
-        </Modal>
+        </Modal >
     );
 }

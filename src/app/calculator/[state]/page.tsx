@@ -141,6 +141,43 @@ export default async function StatePage({ params }: PageProps) {
                         </article>
                     </div>
                 </section>
+
+                {/* JSON-LD Schema for SEO */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": [
+                                {
+                                    "@type": "Question",
+                                    "name": `Is solar subsidy available in ${stateData.name}?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `Yes, residents of ${stateData.name} can avail ₹78,000 subsidy under PM Surya Ghar 2026.`
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": `Who is the electricity provider (DISCOM) in ${stateData.name}?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `${stateData.discomName} is the primary provider. We calculate ROI based on their current tariff of ₹${stateData.tariff}/unit.`
+                                    }
+                                },
+                                {
+                                    "@type": "Question",
+                                    "name": `What is the solar panel cost in ${stateData.name}?`,
+                                    "acceptedAnswer": {
+                                        "@type": "Answer",
+                                        "text": `Tier-1 bifacial panels in ${stateData.name} typically cost between ₹50,000 - ₹60,000 per kW before subsidy.`
+                                    }
+                                }
+                            ]
+                        })
+                    }}
+                />
             </main>
 
             <Footer />

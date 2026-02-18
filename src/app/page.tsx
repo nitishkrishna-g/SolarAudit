@@ -9,6 +9,8 @@ import { Fireflies } from "@/components/ui/fireflies";
 import { ShieldCheck, TrendingUp, Zap, CheckCircle2, Home as HomeIcon, Sun, IndianRupee, MapPin } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { solarData } from "@/data/solarData";
+import Link from "next/link";
 
 export default function Home() {
   const container: Variants = {
@@ -65,6 +67,73 @@ export default function Home() {
 
             <div className="mt-8 lg:mt-0">
               <Calculator />
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 1.5: POPULAR CITIES (Quick Access) */}
+        <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Find Solar in Your City</h2>
+                <p className="text-slate-600 dark:text-slate-400">Get local subsidy rates and verified installer quotes.</p>
+              </div>
+              <Link href="#locations" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline text-sm flex items-center gap-1">
+                View all locations <TrendingUp className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {['Pune', 'Bangalore', 'Mumbai', 'Delhi', 'Chennai', 'Ahmedabad'].map((city) => {
+                // Find parent state for the link
+                const parentState = solarData.find(s => s.cities?.includes(city === 'Bangalore' ? 'Bengaluru' : city));
+                // Handle the Bangalore/Bengaluru naming (using the display name 'Bangalore' for the card but matching 'Bengaluru' in data if needed)
+                // Actually, let's just use the updated names from key cities we know exist in data
+                // Pune, Mumbai, Nagpur are in Maharashtra
+                // Bengaluru is in Karnataka
+                // New Delhi is in Delhi
+                // Chennai is in Tamil Nadu
+                // Ahmedabad is in Gujarat
+
+                // Let's hardcode the accurate links for these popular ones to be safe and fast
+                const linkMap: Record<string, string> = {
+                  'Pune': '/calculator/maharashtra/pune',
+                  'Mumbai': '/calculator/maharashtra/mumbai',
+                  'Bengaluru': '/calculator/karnataka/bengaluru',
+                  'New Delhi': '/calculator/delhi/new-delhi',
+                  'Chennai': '/calculator/tamil-nadu/chennai',
+                  'Ahmedabad': '/calculator/gujarat/ahmedabad'
+                };
+
+                const displayCity = city === 'Bangalore' ? 'Bengaluru' : city; // UI preference? Let's use the one in the map key for display if we iterate the map keys.
+
+                return null;
+              })}
+
+              {/* Manual Grid for Top Cities to ensure they map correctly to my new data structure */}
+              {[
+                { name: 'Pune', url: '/calculator/maharashtra/pune', state: 'Maharashtra' },
+                { name: 'Bengaluru', url: '/calculator/karnataka/bengaluru', state: 'Karnataka' },
+                { name: 'Mumbai', url: '/calculator/maharashtra/mumbai', state: 'Maharashtra' },
+                { name: 'New Delhi', url: '/calculator/delhi/new-delhi', state: 'Delhi' },
+                { name: 'Chennai', url: '/calculator/tamil-nadu/chennai', state: 'Tamil Nadu' },
+                { name: 'Ahmedabad', url: '/calculator/gujarat/ahmedabad', state: 'Gujarat' },
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.url}
+                  className="group relative p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <MapPin className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                    <span className="text-[10px] uppercase font-bold text-slate-400 bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded-full">{item.state}</span>
+                  </div>
+                  <div className="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    {item.name}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
