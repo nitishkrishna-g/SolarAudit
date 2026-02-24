@@ -4,17 +4,16 @@ import { motion } from "framer-motion";
 import { ExternalLink, Star, ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
-    image: string;
+    icon: string;
     name: string;
     rating: number;
     reviewCount: number;
     tagline: string;
-    price?: string;
     link: string;
     badge?: string;
 }
 
-export function ProductCard({ image, name, rating, reviewCount, tagline, price, link, badge }: ProductCardProps) {
+export function ProductCard({ icon, name, rating, reviewCount, tagline, link, badge }: ProductCardProps) {
     const fullStars = Math.floor(rating);
     const hasHalf = rating % 1 >= 0.5;
 
@@ -55,9 +54,9 @@ export function ProductCard({ image, name, rating, reviewCount, tagline, price, 
                 </div>
             )}
 
-            {/* Product image */}
-            <div className="relative shrink-0 w-24 h-24 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center p-2 shadow-inner group-hover:shadow-emerald-500/10 group-hover:shadow-lg transition-shadow">
-                <img src={image} alt={name} className="max-w-full max-h-full object-contain" />
+            {/* Category icon */}
+            <div className="relative shrink-0 w-24 h-24 bg-white/5 dark:bg-white/5 rounded-xl border border-white/10 flex items-center justify-center shadow-inner group-hover:shadow-emerald-500/10 group-hover:shadow-lg transition-shadow">
+                <span className="text-4xl select-none">{icon}</span>
             </div>
 
             {/* Info */}
@@ -73,10 +72,10 @@ export function ProductCard({ image, name, rating, reviewCount, tagline, price, 
                             <Star
                                 key={i}
                                 className={`w-3.5 h-3.5 ${i < fullStars
-                                        ? "text-amber-400 fill-amber-400"
-                                        : i === fullStars && hasHalf
-                                            ? "text-amber-400 fill-amber-200"
-                                            : "text-slate-300 dark:text-slate-600"
+                                    ? "text-amber-400 fill-amber-400"
+                                    : i === fullStars && hasHalf
+                                        ? "text-amber-400 fill-amber-200"
+                                        : "text-slate-300 dark:text-slate-600"
                                     }`}
                             />
                         ))}
@@ -87,10 +86,6 @@ export function ProductCard({ image, name, rating, reviewCount, tagline, price, 
                 </div>
 
                 <p className="text-sm text-slate-600 dark:text-slate-400 italic leading-snug">{tagline}</p>
-
-                {price && (
-                    <p className="text-lg font-bold text-slate-900 dark:text-white mt-1.5 tabular-nums">{price}</p>
-                )}
             </div>
 
             {/* CTA */}

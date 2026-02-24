@@ -397,26 +397,24 @@ export function GuidesContent() {
 
                         <Reveal delay={0.1}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Luminous Zelio 1100 Pure Sine Wave Inverter"
-                                rating={4.5}
-                                reviewCount={2400}
-                                tagline="Best value for 2BHK homes. Silent operation, 32-bit DSP processor."
-                                price="~₹6,500"
-                                link="https://www.amazon.in/dp/B00L4R6E96?tag=solaraudit-21"
+                                icon="⚡"
+                                name="Microtek iMerlyn 1050 Advanced Digital 900VA/725W Inverter"
+                                rating={4.2}
+                                reviewCount={850}
+                                tagline="Support 1 Battery with 3 Year Warranty. Best value for Home, Office & Shops."
+                                link="https://amzn.to/4cMVjpf"
                                 badge="Editor's Choice"
                             />
                         </Reveal>
 
                         <Reveal delay={0.15}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Microtek Solar UPS M-SUN 1135 VA"
-                                rating={4}
-                                reviewCount={890}
-                                tagline="Budget pick. Good for smaller loads. Slightly noisier than Luminous."
-                                price="~₹5,200"
-                                link="https://www.amazon.in/s?k=microtek+solar+inverter&tag=solaraudit-21"
+                                icon="⚡"
+                                name="V-Guard Prime 1150 Inverter — 1000VA / 12V Pure Sine Wave"
+                                rating={4.4}
+                                reviewCount={1200}
+                                tagline="Reliable Power Backup with LED Display, Easy Installation & 3-Year Warranty."
+                                link="https://amzn.to/4aBnIgJ"
                             />
                         </Reveal>
 
@@ -501,13 +499,13 @@ export function GuidesContent() {
 
                         <Reveal delay={0.1}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Luminous Red Charge RC 18000 150Ah Battery"
-                                rating={4}
-                                reviewCount={1200}
-                                tagline="India's most popular solar battery. 36-month warranty. Handles deep discharge well."
-                                price="~₹14,500"
-                                link="https://www.amazon.in/s?k=luminous+red+charge+solar+battery&tag=solaraudit-21"
+                                icon="🔋"
+                                name="AYUDH 12V 100AH LiFePO4 Inverter Battery"
+                                rating={4.5}
+                                reviewCount={980}
+                                tagline="Solar Compatible, 20 Years Life. Works with any normal inverter. 5 Years Warranty."
+                                link="https://amzn.to/4aQKTSS"
+                                badge="Best Seller"
                             />
                         </Reveal>
 
@@ -702,13 +700,12 @@ export function GuidesContent() {
 
                         <Reveal delay={0.1}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Solar Radiation Meter / Pyranometer"
-                                rating={4}
-                                reviewCount={340}
-                                tagline="Don't trust your installer's word. Measure your roof's solar potential yourself."
-                                price="~₹1,500"
-                                link="https://www.amazon.in/s?k=solar+radiation+meter&tag=solaraudit-21"
+                                icon="🔌"
+                                name="Tuya WiFi Smart Energy Meter 63A 230V — DIN Rail"
+                                rating={4.0}
+                                reviewCount={320}
+                                tagline="Earth Leakage & Surge Protection. Smart Life APP Remote Control. Monitor your solar output."
+                                link="https://amzn.to/4qXHdVI"
                             />
                         </Reveal>
 
@@ -747,25 +744,24 @@ export function GuidesContent() {
 
                         <Reveal delay={0.1}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Solar Panel Cleaning Kit (3.5m Telescopic Pole)"
-                                rating={4.5}
-                                reviewCount={540}
-                                tagline="Don't risk climbing the roof. This pole reaches 3-storey buildings safely."
-                                price="~₹850"
-                                link="https://www.amazon.in/s?k=solar+panel+cleaning+brush+telescopic&tag=solaraudit-21"
+                                icon="🧹"
+                                name="Connecticut Solar Panel Cleaning Brush Kit — 3 Meter"
+                                rating={4.3}
+                                reviewCount={1500}
+                                tagline="Heavy-Duty Nylon Water Brush with Telescopic Pole. Reaches 3-storey roofs safely."
+                                link="https://amzn.to/4rHlEdc"
+                                badge="Best Seller"
                             />
                         </Reveal>
 
                         <Reveal delay={0.15}>
                             <ProductCard
-                                image="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg"
-                                name="Tuya Wi-Fi Smart Energy Monitor"
-                                rating={4}
-                                reviewCount={320}
-                                tagline="See your live solar generation on your phone. Clips onto wires in 5 minutes."
-                                price="~₹1,200"
-                                link="https://www.amazon.in/s?k=wifi+smart+energy+meter+solar&tag=solaraudit-21"
+                                icon="🧹"
+                                name="Fieldstar Solar Cleaning Kit — 18FT/5.4M Telescopic Pole"
+                                rating={4.4}
+                                reviewCount={720}
+                                tagline="Window & Solar Panel Cleaning Brush with Nylon Bristles, Squeegee & Water Fed PU Pipe."
+                                link="https://amzn.to/4s92Z9S"
                             />
                         </Reveal>
 

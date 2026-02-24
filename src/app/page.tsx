@@ -13,6 +13,7 @@ import { solarData } from "@/data/solarData";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { AmazonBounty } from "@/components/ads/AmazonBounty";
+import { ProductCard } from "@/components/guides/ProductCard";
 
 import { useState } from "react";
 
@@ -130,138 +131,57 @@ export default function Home() {
                 </div>
 
                 {/* BUYING LINKS / ADS: REPLACED WITH PRODUCT */}
-                <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Best Seller</span>
-                    <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full">Save 38%</span>
-                  </div>
+                <div className="space-y-0">
+                  <ProductCard
+                    icon="⚡"
+                    name="Microtek iMerlyn 1050 Advanced Digital 900VA/725W Inverter"
+                    rating={4.2}
+                    reviewCount={850}
+                    tagline="Support 1 Battery with 3 Year Warranty. Best value for Home, Office & Shops."
+                    link="https://amzn.to/4cMVjpf"
+                    badge="Best Seller"
+                  />
 
-                  <a
-                    href="https://www.amazon.in/dp/B00L4R6E96?tag=solaraudit-21"
-                    target="_blank"
-                    rel="nofollow noopener"
-                    className="flex items-start gap-4 group"
+                  {/* DYNAMIC PRODUCT EXPANSION */}
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: isCalculatorExpanded ? "auto" : 0, opacity: isCalculatorExpanded ? 1 : 0 }}
+                    className=""
                   >
-                    <div className="w-24 h-24 bg-white rounded-lg p-2 border border-slate-100 flex items-center justify-center shrink-0">
-                      <img src="https://m.media-amazon.com/images/I/41-M+6q+LAL._SX300_SY300_QL70_FMwebp_.jpg" alt="Solar Inverter" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 dark:text-white leading-tight group-hover:text-emerald-600 transition-colors">
-                        Luminous NXG 1400 Solar Inverter (12V)
-                      </h3>
-                      <div className="flex items-center gap-2 mt-1 mb-2">
-                        <div className="flex text-amber-400">
-                          <span className="text-xs">★★★★☆</span>
-                        </div>
-                        <span className="text-xs text-slate-500">(2.4k reviews)</span>
+                    <div className="pt-2">
+                      <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm uppercase tracking-wider mb-2">
+                        <Zap className="w-4 h-4" /> Recommended Add-ons
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg font-bold text-slate-900 dark:text-white">₹9,500</span>
-                        <span className="text-sm text-slate-400 line-through">₹16,500</span>
-                      </div>
-                      <div className="mt-3 text-xs font-bold text-center text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-lg px-3 py-1.5 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/20 transition-colors w-full">
-                        Check Price on Amazon
-                      </div>
+                      <ProductCard
+                        icon="🧹"
+                        name="Connecticut Solar Panel Cleaning Brush Kit"
+                        rating={4.3}
+                        reviewCount={1500}
+                        tagline="Heavy-Duty Nylon Water Brush with Telescopic Pole. Reaches 3-storey roofs safely."
+                        link="https://amzn.to/4rHlEdc"
+                      />
+
+                      <ProductCard
+                        icon="🔋"
+                        name="AYUDH 12V 100AH LiFePO4 Inverter Battery"
+                        rating={4.5}
+                        reviewCount={980}
+                        tagline="Solar Compatible, 20 Years Life. Works with any normal inverter."
+                        link="https://amzn.to/4aQKTSS"
+                      />
+
+                      <ProductCard
+                        icon="🔌"
+                        name="Tuya WiFi Smart Energy Meter 63A 230V"
+                        rating={4.0}
+                        reviewCount={320}
+                        tagline="Track your solar output live on your phone. Easy DIN rail installation."
+                        link="https://amzn.to/4qXHdVI"
+                      />
                     </div>
-                  </a>
+                  </motion.div>
                 </div>
-
-                {/* DYNAMIC PRODUCT EXPANSION */}
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: isCalculatorExpanded ? "auto" : 0, opacity: isCalculatorExpanded ? 1 : 0 }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-4 space-y-4">
-                    <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm uppercase tracking-wider">
-                      <Zap className="w-4 h-4" /> Recommended Add-ons
-                    </div>
-                    {/* Product 2: Cleaning Kit */}
-                    <a
-                      href="https://www.amazon.in/dp/B09X5K6G3T?tag=solaraudit-21"
-                      target="_blank"
-                      rel="nofollow noopener"
-                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
-                    >
-                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
-                        <img src="https://m.media-amazon.com/images/I/51wQge-zWlL._SX522_.jpg" alt="Cleaning Kit" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
-                          Solar Panel Cleaning Kit (Brush + Pole)
-                        </h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-emerald-600 font-bold text-sm">₹1,499</span>
-                          <span className="text-slate-400 text-xs line-through">₹2,999</span>
-                          <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] px-1.5 py-0.5 rounded">50% OFF</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    {/* Product 3: Solar Battery */}
-                    <a
-                      href="https://www.amazon.in/d/B00L4R6E96?tag=solaraudit-21"
-                      target="_blank"
-                      rel="nofollow noopener"
-                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
-                    >
-                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
-                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Battery" alt="Solar Battery" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
-                          Luminous Red Charge RC 18000 150 Ah
-                        </h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-emerald-600 font-bold text-sm">₹14,500</span>
-                          <span className="text-slate-400 text-xs line-through">₹22,000</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    {/* Product 4: Garden Lights */}
-                    <a
-                      href="https://www.amazon.in/s?k=solar+garden+lights&tag=solaraudit-21"
-                      target="_blank"
-                      rel="nofollow noopener"
-                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
-                    >
-                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
-                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Garden+Lights" alt="Garden Lights" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
-                          Solar Garden Lights (Pack of 4)
-                        </h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-emerald-600 font-bold text-sm">₹899</span>
-                          <span className="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] px-1.5 py-0.5 rounded">Best Seller</span>
-                        </div>
-                      </div>
-                    </a>
-
-                    {/* Product 5: Smart Meter */}
-                    <a
-                      href="https://www.amazon.in/s?k=smart+energy+meter&tag=solaraudit-21"
-                      target="_blank"
-                      rel="nofollow noopener"
-                      className="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 hover:border-emerald-500/30 transition-all group"
-                    >
-                      <div className="w-16 h-16 bg-white rounded-lg p-1 border border-slate-100 flex items-center justify-center shrink-0">
-                        <img src="https://placehold.co/400x300/e2e8f0/1e293b?text=Smart+Meter" alt="Smart Meter" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="min-w-0">
-                        <h4 className="font-bold text-slate-900 dark:text-white text-sm truncate group-hover:text-emerald-500 transition-colors">
-                          Smart Wi-Fi Energy Meter (Tuya App)
-                        </h4>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-emerald-600 font-bold text-sm">₹2,299</span>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                </motion.div>
               </div>
 
               {/* RIGHT COLUMN: Calculator */}
@@ -541,7 +461,7 @@ export default function Home() {
       </main>
 
       {/* GUIDES TEASER SECTION */}
-      <section className="relative py-20 overflow-hidden bg-slate-900 dark:bg-slate-950">
+      <section className="relative py-20 overflow-hidden bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
         {/* Background glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[80px]" />
@@ -556,15 +476,15 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wide mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wide mb-4">
               <BookOpen className="w-3 h-3" />
               Free Knowledge Base
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               The Only Solar Guide<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">You'll Ever Need</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400 dark:from-emerald-400 dark:to-cyan-400">You'll Ever Need</span>
             </h2>
-            <p className="text-lg text-slate-400 max-w-xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
               From PM Surya Ghar subsidies to the best inverters — everything in one place. No sign-up required.
             </p>
           </motion.div>
@@ -578,10 +498,10 @@ export default function Home() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
           >
             {[
-              { emoji: "💰", title: "The Economics", desc: "Does solar actually pay off in 2026?", color: "from-emerald-500/10 to-teal-500/5 border-emerald-500/20" },
-              { emoji: "⚡", title: "Best Hardware", desc: "Top inverters & panels reviewed", color: "from-amber-500/10 to-orange-500/5 border-amber-500/20" },
-              { emoji: "🔧", title: "Installation", desc: "What happens after you sign", color: "from-blue-500/10 to-indigo-500/5 border-blue-500/20" },
-              { emoji: "🧹", title: "Maintenance", desc: "The ₹500/month you're losing to dust", color: "from-violet-500/10 to-purple-500/5 border-violet-500/20" },
+              { emoji: "💰", title: "The Economics", desc: "Does solar actually pay off in 2026?", color: "bg-emerald-50/50 dark:bg-gradient-to-br dark:from-emerald-500/10 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/20" },
+              { emoji: "⚡", title: "Best Hardware", desc: "Top inverters & panels reviewed", color: "bg-amber-50/50 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-orange-500/5 border-amber-200 dark:border-amber-500/20" },
+              { emoji: "🔧", title: "Installation", desc: "What happens after you sign", color: "bg-blue-50/50 dark:bg-gradient-to-br dark:from-blue-500/10 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/20" },
+              { emoji: "🧹", title: "Maintenance", desc: "The ₹500/month you're losing to dust", color: "bg-violet-50/50 dark:bg-gradient-to-br dark:from-violet-500/10 dark:to-purple-500/5 border-violet-200 dark:border-violet-500/20" },
             ].map((card, i) => (
               <motion.div
                 key={card.title}
@@ -589,11 +509,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 * i }}
-                className={`bg-gradient-to-br ${card.color} border rounded-2xl p-5 hover:scale-[1.02] transition-transform cursor-pointer`}
+                className={`${card.color} border rounded-2xl p-5 hover:scale-[1.02] transition-transform cursor-pointer shadow-sm`}
               >
                 <div className="text-2xl mb-3">{card.emoji}</div>
-                <h3 className="font-bold text-white text-sm mb-1">{card.title}</h3>
-                <p className="text-xs text-slate-400">{card.desc}</p>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{card.title}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400">{card.desc}</p>
               </motion.div>
             ))}
           </motion.div>
