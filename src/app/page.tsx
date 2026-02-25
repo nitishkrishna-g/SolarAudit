@@ -498,10 +498,10 @@ export default function Home() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10"
           >
             {[
-              { emoji: "💰", title: "The Economics", desc: "Does solar actually pay off in 2026?", color: "bg-emerald-50/50 dark:bg-gradient-to-br dark:from-emerald-500/10 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/20" },
-              { emoji: "⚡", title: "Best Hardware", desc: "Top inverters & panels reviewed", color: "bg-amber-50/50 dark:bg-gradient-to-br dark:from-amber-500/10 dark:to-orange-500/5 border-amber-200 dark:border-amber-500/20" },
-              { emoji: "🔧", title: "Installation", desc: "What happens after you sign", color: "bg-blue-50/50 dark:bg-gradient-to-br dark:from-blue-500/10 dark:to-indigo-500/5 border-blue-200 dark:border-blue-500/20" },
-              { emoji: "🧹", title: "Maintenance", desc: "The ₹500/month you're losing to dust", color: "bg-violet-50/50 dark:bg-gradient-to-br dark:from-violet-500/10 dark:to-purple-500/5 border-violet-200 dark:border-violet-500/20" },
+              { emoji: "💰", title: "The Economics", desc: "Does solar actually pay off in 2026?", color: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30 dark:hover:bg-emerald-500/20 hover:border-emerald-500/50 shadow-emerald-500/5" },
+              { emoji: "⚡", title: "Best Hardware", desc: "Top inverters & panels reviewed", color: "bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/30 dark:hover:bg-amber-500/20 hover:border-amber-500/50 shadow-amber-500/5" },
+              { emoji: "🔧", title: "Installation", desc: "What happens after you sign", color: "bg-blue-50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/30 dark:hover:bg-blue-500/20 hover:border-blue-500/50 shadow-blue-500/5" },
+              { emoji: "🧹", title: "Maintenance", desc: "The ₹500/month you're losing to dust", color: "bg-violet-50 dark:bg-violet-500/10 border-violet-200 dark:border-violet-500/30 dark:hover:bg-violet-500/20 hover:border-violet-500/50 shadow-violet-500/5" },
             ].map((card, i) => (
               <motion.div
                 key={card.title}
@@ -509,11 +509,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 * i }}
-                className={`${card.color} border rounded-2xl p-4 sm:p-5 hover:scale-[1.02] transition-transform cursor-pointer shadow-sm min-h-[120px] flex flex-col`}
+                className={`${card.color} border rounded-2xl p-4 sm:p-5 hover:scale-[1.02] transition-all cursor-pointer shadow-sm min-h-[120px] flex flex-col md:backdrop-blur-sm`}
               >
                 <div className="text-xl sm:text-2xl mb-2 sm:mb-3">{card.emoji}</div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm mb-1">{card.title}</h3>
-                <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{card.desc}</p>
+                <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </motion.div>
