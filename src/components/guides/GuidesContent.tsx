@@ -18,6 +18,15 @@ const stagger = {
     show: { transition: { staggerChildren: 0.1 } },
 };
 
+const accentMap: Record<string, { node: string; badge: string; text: string; border: string }> = {
+    emerald: { node: "bg-emerald-500", badge: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800", text: "text-emerald-600 dark:text-emerald-400", border: "border-emerald-200 dark:border-emerald-800/60" },
+    violet: { node: "bg-violet-500", badge: "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 border-violet-200 dark:border-violet-800", text: "text-violet-600 dark:text-violet-400", border: "border-violet-200 dark:border-violet-800/60" },
+    amber: { node: "bg-amber-500", badge: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800", text: "text-amber-600 dark:text-amber-400", border: "border-amber-200 dark:border-amber-800/60" },
+    blue: { node: "bg-blue-500", badge: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800", text: "text-blue-600 dark:text-blue-400", border: "border-blue-200 dark:border-blue-800/60" },
+    orange: { node: "bg-orange-500", badge: "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800", text: "text-orange-600 dark:text-orange-400", border: "border-orange-200 dark:border-orange-800/60" },
+    teal: { node: "bg-teal-500", badge: "bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-800", text: "text-teal-600 dark:text-teal-400", border: "border-teal-200 dark:border-teal-800/60" },
+};
+
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
     return (
         <motion.div
@@ -581,14 +590,6 @@ export function GuidesContent() {
                                     },
                                 ].map((step, i) => {
                                     const isRight = i % 2 === 0;
-                                    const accentMap: Record<string, { node: string; badge: string; text: string; border: string }> = {
-                                        emerald: { node: "bg-emerald-500", badge: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800", text: "text-emerald-600 dark:text-emerald-400", border: "border-emerald-200 dark:border-emerald-800/60" },
-                                        violet: { node: "bg-violet-500", badge: "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 border-violet-200 dark:border-violet-800", text: "text-violet-600 dark:text-violet-400", border: "border-violet-200 dark:border-violet-800/60" },
-                                        amber: { node: "bg-amber-500", badge: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800", text: "text-amber-600 dark:text-amber-400", border: "border-amber-200 dark:border-amber-800/60" },
-                                        blue: { node: "bg-blue-500", badge: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800", text: "text-blue-600 dark:text-blue-400", border: "border-blue-200 dark:border-blue-800/60" },
-                                        orange: { node: "bg-orange-500", badge: "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-800", text: "text-orange-600 dark:text-orange-400", border: "border-orange-200 dark:border-orange-800/60" },
-                                        teal: { node: "bg-teal-500", badge: "bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-800", text: "text-teal-600 dark:text-teal-400", border: "border-teal-200 dark:border-teal-800/60" },
-                                    };
                                     const a = accentMap[step.accent];
                                     return (
                                         <div key={step.day} className="relative flex items-start md:items-center gap-0 pb-8 last:pb-0">

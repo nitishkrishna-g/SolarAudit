@@ -1,16 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Calculator } from "lucide-react";
 
 export function ExitIntentModal() {
     const [open, setOpen] = useState(false);
-    const [triggered, setTriggered] = useState(false);
+    const triggered = useRef(false);
 
     useEffect(() => {
         const onMouseLeave = (e: MouseEvent) => {
-            if (e.clientY <= 0 && !triggered) {
+            if (e.clientY <= 0 && !triggered.current) {
                 setOpen(true);
-                setTriggered(true);
+                triggered.current = true;
             }
         };
         // Only attach after 8 seconds on page
@@ -21,7 +21,7 @@ export function ExitIntentModal() {
             clearTimeout(t);
             document.removeEventListener("mouseleave", onMouseLeave);
         };
-    }, [triggered]);
+    }, []);
 
     if (!open) return null;
 
