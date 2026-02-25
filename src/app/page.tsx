@@ -67,7 +67,7 @@ export default function Home() {
                 </span>
                 Updated for 2026 Policy
               </div>
-              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                 Stop renting electricity. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Own it.</span>
               </h1>
@@ -495,7 +495,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10"
           >
             {[
               { emoji: "💰", title: "The Economics", desc: "Does solar actually pay off in 2026?", color: "bg-emerald-50/50 dark:bg-gradient-to-br dark:from-emerald-500/10 dark:to-teal-500/5 border-emerald-200 dark:border-emerald-500/20" },
@@ -509,11 +509,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.1 * i }}
-                className={`${card.color} border rounded-2xl p-5 hover:scale-[1.02] transition-transform cursor-pointer shadow-sm`}
+                className={`${card.color} border rounded-2xl p-4 sm:p-5 hover:scale-[1.02] transition-transform cursor-pointer shadow-sm min-h-[120px] flex flex-col`}
               >
-                <div className="text-2xl mb-3">{card.emoji}</div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{card.title}</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400">{card.desc}</p>
+                <div className="text-xl sm:text-2xl mb-2 sm:mb-3">{card.emoji}</div>
+                <h3 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm mb-1">{card.title}</h3>
+                <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </motion.div>

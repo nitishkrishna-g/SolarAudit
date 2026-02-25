@@ -78,9 +78,27 @@ export default function ShopPage() {
             </section>
 
             <main className="container mx-auto px-4 pb-16">
+                {/* Mobile: Horizontal scrollable category pills */}
+                <div className="md:hidden mb-6 -mx-4 px-4">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setSelectedCategory(cat)}
+                                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors border ${selectedCategory === cat
+                                    ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-emerald-400"
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="flex flex-col md:flex-row gap-8">
-                    {/* Sidebar Filters */}
-                    <aside className="w-full md:w-64 flex-shrink-0">
+                    {/* Sidebar Filters — desktop only */}
+                    <aside className="hidden md:block w-64 flex-shrink-0">
                         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 sticky top-24">
                             <div className="flex items-center gap-2 mb-4 font-bold text-slate-900 dark:text-white">
                                 <Filter className="w-4 h-4" />
@@ -124,7 +142,7 @@ export default function ShopPage() {
 
                     {/* Product Grid */}
                     <div className="flex-grow">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                             {filteredProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
