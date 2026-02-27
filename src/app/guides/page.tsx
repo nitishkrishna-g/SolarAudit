@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function GuidesPage() {
     return (
-        <div className="min-h-screen flex flex-col relative overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans selection:bg-emerald-500/30 transition-colors duration-300">
+        <div className="min-h-screen flex flex-col relative bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans selection:bg-emerald-500/30 transition-colors duration-300">
             <ReadingProgress />
             <ExitIntentModal />
             <Navbar />

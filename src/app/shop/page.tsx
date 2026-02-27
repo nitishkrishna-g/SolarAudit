@@ -26,7 +26,7 @@ export default function ShopPage() {
             <Fireflies />
 
             {/* Hero — matches homepage aurora */}
-            <section className="relative overflow-hidden pb-12 pt-0">
+            <section className="relative overflow-hidden pb-8 pt-0">
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/20 blur-[100px]" />
                     <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/15 blur-[100px]" />
@@ -77,7 +77,7 @@ export default function ShopPage() {
                 </div>
             </section>
 
-            <main className="container mx-auto px-4 pb-16">
+            <main className="container mx-auto px-4 pb-16 pt-8">
                 {/* Mobile: Horizontal scrollable category pills */}
                 <div className="md:hidden mt-4 mb-6 -mx-4 px-4">
                     <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">

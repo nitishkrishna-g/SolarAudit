@@ -83,7 +83,7 @@ export function GuidesContent() {
     return (
         <div>
             {/* ── HERO ─────────────────────────────────────────────────── */}
-            <section className="relative overflow-hidden pb-16 pt-0">
+            <section className="relative overflow-hidden pb-4 pt-0">
                 {/* Aurora blobs — identical to homepage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/20 blur-[100px]" />
@@ -229,7 +229,7 @@ export function GuidesContent() {
 
             {/* ── MAIN CONTENT ─────────────────────────────────────────── */}
             <div className="container mx-auto px-4 py-12">
-                <div className="flex gap-8 xl:gap-12">
+                <div className="flex items-start gap-8 xl:gap-12">
                     <ChapterSidebar />
 
 

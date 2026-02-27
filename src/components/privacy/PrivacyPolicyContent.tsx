@@ -31,11 +31,11 @@ export function PrivacyPolicyContent() {
     return (
         <main className="flex-grow flex flex-col relative z-10 w-full mb-20">
             {/* HERO SECTION */}
-            <section className="relative overflow-hidden pb-16 pt-0 w-full">
+            <section className="relative overflow-hidden pb-2 pt-0 w-full">
                 {/* Aurora blobs - Same as Guides/HomePage */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
                     <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/20 blur-[100px]" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/15 blur-[100px]" />
+                    <div className="absolute top-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/15 blur-[100px]" />
                 </div>
 
                 <div className="relative z-10 container mx-auto px-4 py-16 md:py-24 text-center">
@@ -74,7 +74,7 @@ export function PrivacyPolicyContent() {
                         variants={stagger}
                         initial="hidden"
                         animate="show"
-                        className="flex flex-wrap justify-center gap-2 mb-12"
+                        className="flex flex-wrap justify-center gap-2 mb-4"
                     >
                         {[
                             { id: "introduction", label: "📄 Introduction", icon: FileText },
@@ -98,7 +98,7 @@ export function PrivacyPolicyContent() {
             </section>
 
             {/* CONTENT SECTION */}
-            <div className="container mx-auto px-4 pb-12 border-t border-slate-200/50 dark:border-slate-800/50 pt-16 mt-[-40px]">
+            <div className="container mx-auto px-4 pb-12 border-t border-slate-200/50 dark:border-slate-800/50 pt-8 mt-[-20px]">
                 <div className="max-w-3xl mx-auto">
                     <article className="prose prose-emerald lg:prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
                         <Reveal>
