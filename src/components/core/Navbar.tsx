@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 export function Navbar() {
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -105,11 +105,11 @@ export function Navbar() {
                         <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
                             className="rounded-full w-9 h-9 p-0"
                             aria-label="Toggle Theme"
                         >
-                            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                            {resolvedTheme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                         </Button>
                     )}
                 </div>

@@ -43,19 +43,35 @@ export function Calculator({ onCalculationComplete }: { onCalculationComplete?: 
         );
     }, [searchQuery]);
 
+    const [hasCalculated, setHasCalculated] = useState(false);
+
     // Calculation Result
-    const result = useMemo(() => {
-        if (!selectedState) return null;
-        return calculateSolar(billAmount, selectedState, roofType);
-    }, [selectedState, billAmount, roofType]);
+    const [result, setResult] = useState<ReturnType<typeof calculateSolar> | null>(null);
+    const [isCalculating, setIsCalculating] = useState(false);
+
+    const handleCalculate = () => {
+        if (!selectedState) return;
+        setIsCalculating(true);
+        // Add a slight delay for better UX
+        setTimeout(() => {
+            const res = calculateSolar(billAmount, selectedState, roofType);
+            setResult(res);
+            setHasCalculated(true);
+            setIsCalculating(false);
+        }, 500);
+    };
 
     useEffect(() => {
-        if (result && onCalculationComplete) {
+        if (hasCalculated && result && onCalculationComplete) {
             onCalculationComplete();
         }
-    }, [result, onCalculationComplete]);
+    }, [hasCalculated, result, onCalculationComplete]);
 
-
+    // Reset result when inputs change
+    useEffect(() => {
+        setHasCalculated(false);
+        setResult(null);
+    }, [selectedState, billAmount, roofArea, roofType]);
 
     useEffect(() => {
         setMounted(true);
@@ -234,16 +250,25 @@ export function Calculator({ onCalculationComplete }: { onCalculationComplete?: 
                     </div>
                 </div>
 
+                {/* Calculate Button */}
+                <Button
+                    className="w-full h-14 text-lg font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 rounded-xl mt-4"
+                    onClick={handleCalculate}
+                    disabled={!selectedState || isCalculating}
+                >
+                    {isCalculating ? "Calculating..." : "Calculate Savings"}
+                </Button>
+
                 {/* Results View (Animated) */}
                 <AnimatePresence>
-                    {selectedState && result && (
+                    {hasCalculated && result && (
                         <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             className="overflow-hidden"
                         >
-                            <div className="pt-6 border-t border-border-color space-y-6">
+                            <div className="pt-6 border-t border-border-color space-y-6 mt-6">
                                 {/* Warning for Roof Area */}
                                 {(result.systemSize * 100) > roofArea && (
                                     <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-sm text-red-600 dark:text-red-400">
@@ -310,10 +335,11 @@ export function Calculator({ onCalculationComplete }: { onCalculationComplete?: 
                                     </Button>
                                     <Link
                                         href="/shop"
-                                        className="inline-flex items-center justify-center whitespace-nowrap rounded-xl font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-auto py-3 text-sm bg-emerald-600 hover:bg-emerald-700 whitespace-normal text-white px-6 shadow-lg shadow-emerald-500/20"
+                                        className="inline-flex items-center justify-center rounded-xl font-medium transition-colors h-auto py-3 text-sm md:text-sm bg-emerald-600 hover:bg-emerald-700 text-white px-3 sm:px-6 shadow-lg shadow-emerald-500/20 text-center leading-tight sm:leading-normal"
                                     >
-                                        Shop Solar Components
-                                        <ShoppingCart className="w-3 h-3 ml-1 inline" />
+                                        <span className="hidden sm:inline">Shop Solar Components</span>
+                                        <span className="sm:hidden">Shop Solar Gear</span>
+                                        <ShoppingCart className="w-3 h-3 ml-1 sm:ml-2 inline shrink-0" />
                                     </Link>
                                     <p className="col-span-2 text-center text-[10px] text-slate-400">
                                         Free quote valid for 24 hours

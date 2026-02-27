@@ -79,8 +79,8 @@ export default function ShopPage() {
 
             <main className="container mx-auto px-4 pb-16">
                 {/* Mobile: Horizontal scrollable category pills */}
-                <div className="md:hidden mb-6 -mx-4 px-4">
-                    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                <div className="md:hidden mt-4 mb-6 -mx-4 px-4">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
