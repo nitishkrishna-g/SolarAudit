@@ -7,8 +7,31 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "SolarAudit - The 2026 Solar ROI Engine",
-  description: "Your rooftop, audited for profit. Calculate exact ROI using 2026 PM Surya Ghar subsidy rates.",
+  metadataBase: new URL("https://solaraudit.in"),
+  title: {
+    default: "SolarAudit – The 2026 Solar ROI Engine | Calculate Your Savings",
+    template: "%s | SolarAudit",
+  },
+  description:
+    "Your rooftop, audited for profit. Calculate exact solar ROI using 2026 PM Surya Ghar subsidy rates, state-specific tariffs, and net metering data.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "SolarAudit – The 2026 Solar ROI Engine",
+    description:
+      "Calculate exact solar ROI using 2026 PM Surya Ghar subsidy rates and state-specific tariffs. No hidden math. Just pure savings.",
+    url: "https://solaraudit.in",
+    siteName: "SolarAudit",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SolarAudit – The 2026 Solar ROI Engine",
+    description:
+      "Calculate exact solar ROI using 2026 PM Surya Ghar subsidy rates. No hidden math. Just pure savings.",
+  },
 };
 
 export default function RootLayout({
@@ -23,24 +46,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              "name": "SolarAudit ROI Calculator",
-              "applicationCategory": "FinanceApplication",
-              "operatingSystem": "Web",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "INR"
-              }
-            })
-          }}
+          strategy="lazyOnload"
         />
       </head>
       <body className={`${inter.variable} antialiased`}>

@@ -1,3 +1,5 @@
+"use client";
+
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { motion } from "framer-motion";
