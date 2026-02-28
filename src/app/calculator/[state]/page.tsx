@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    const canonicalUrl = `https://solaraudit.in/calculator/${stateSlug}`;
+    const canonicalUrl = `https://solaraudit.vercel.app/calculator/${stateSlug}`;
 
     return {
         title: `Solar Panel Subsidy in ${stateData.name} (2026 Guide)`,
@@ -82,19 +82,19 @@ export default async function StatePage({ params }: PageProps) {
                         "@type": "ListItem",
                         position: 1,
                         name: "Home",
-                        item: "https://solaraudit.in",
+                        item: "https://solaraudit.vercel.app",
                     },
                     {
                         "@type": "ListItem",
                         position: 2,
                         name: "Calculator",
-                        item: "https://solaraudit.in/calculator",
+                        item: "https://solaraudit.vercel.app/calculator",
                     },
                     {
                         "@type": "ListItem",
                         position: 3,
                         name: stateData.name,
-                        item: `https://solaraudit.in/calculator/${stateSlug}`,
+                        item: `https://solaraudit.vercel.app/calculator/${stateSlug}`,
                     },
                 ],
             },

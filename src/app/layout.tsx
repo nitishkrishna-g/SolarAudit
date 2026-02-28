@@ -7,7 +7,7 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://solaraudit.in"),
+  metadataBase: new URL("https://solaraudit.vercel.app"),
   title: {
     default: "SolarAudit – The 2026 Solar ROI Engine | Calculate Your Savings",
     template: "%s | SolarAudit",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "SolarAudit – The 2026 Solar ROI Engine",
     description:
       "Calculate exact solar ROI using 2026 PM Surya Ghar subsidy rates and state-specific tariffs. No hidden math. Just pure savings.",
-    url: "https://solaraudit.in",
+    url: "https://solaraudit.vercel.app",
     siteName: "SolarAudit",
     locale: "en_IN",
     type: "website",

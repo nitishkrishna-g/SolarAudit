@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: "/api/",
             },
         ],
-        sitemap: "https://solaraudit.in/sitemap.xml",
+        sitemap: "https://solaraudit.vercel.app/sitemap.xml",
     };
 }

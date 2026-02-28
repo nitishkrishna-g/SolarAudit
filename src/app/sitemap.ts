@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { solarData } from "@/data/solarData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://solaraudit.in";
+    const baseUrl = "https://solaraudit.vercel.app";
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {

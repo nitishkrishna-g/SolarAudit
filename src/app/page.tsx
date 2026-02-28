@@ -33,7 +33,7 @@ export default function Home() {
   const websiteSchema = {
     "@type": "WebSite",
     name: "SolarAudit",
-    url: "https://solaraudit.in",
+    url: "https://solaraudit.vercel.app",
     description:
       "Calculate exact solar ROI using 2026 PM Surya Ghar subsidy rates and state-specific tariffs.",
     potentialAction: {
@@ -41,7 +41,7 @@ export default function Home() {
       target: {
         "@type": "EntryPoint",
         urlTemplate:
-          "https://solaraudit.in/calculator/{state_slug}",
+          "https://solaraudit.vercel.app/calculator/{state_slug}",
       },
       "query-input": "required name=state_slug",
     },
