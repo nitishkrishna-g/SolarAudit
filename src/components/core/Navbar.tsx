@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Moon, Sun, Zap, BookOpen, Calculator, Home, Menu, X, ShoppingBag, Shield } from "lucide-react";
+import { Moon, Sun, Zap, BookOpen, Calculator, Home, Menu, X, ShoppingBag, Shield, Users } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/Button";
 import { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ const navLinks = [
     { href: "/guides", label: "Guides", icon: BookOpen },
     { href: "/shop", label: "Shop", icon: ShoppingBag },
     { href: "/privacy-policy", label: "Privacy", icon: Shield },
+    { href: "/about", label: "About", icon: Users },
 ];
 
 export function Navbar() {

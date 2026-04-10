@@ -59,19 +59,10 @@ export default function Home() {
 
       <main>
         {/* SECTION 1: HERO */}
-        <section className="relative pb-20 pt-0 overflow-hidden">
+        <section className="relative pb-20 pt-15 overflow-hidden">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-emerald-500/30 blur-[100px]" />
             <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-amber-500/20 blur-[100px]" />
-          </div>
-
-          {/* AD ZONE 1: LEADERBOARD */}
-          <div className="container relative z-20 px-4 pt-6 pb-6 mx-auto flex justify-center">
-            <div className="w-full max-w-[728px] min-h-[90px] bg-white/50 dark:bg-slate-900/50 backdrop-blur-md rounded-xl flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 text-xs border border-white/20 dark:border-white/10 shadow-sm">
-              <span className="uppercase tracking-widest opacity-70 font-semibold">
-                Advertisement
-              </span>
-            </div>
           </div>
 
           <div className="container relative z-10 px-4 mx-auto flex flex-col lg:flex-row gap-12 items-center justify-center">
@@ -125,16 +116,6 @@ export default function Home() {
         {/* SECTION 1.5: CALCULATOR */}
         <CalculatorSection />
 
-        {/* AD ZONE 2: SECTION BREAK */}
-        <section className="bg-slate-50 dark:bg-slate-950 py-8 flex justify-center border-b border-slate-200 dark:border-slate-800">
-          <div className="container mx-auto px-4 flex justify-center">
-            <div className="w-full max-w-[728px] min-h-[90px] bg-slate-100 dark:bg-slate-900 rounded flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 text-xs">
-              <span className="uppercase tracking-widest opacity-50">
-                Sponsored
-              </span>
-            </div>
-          </div>
-        </section>
 
         {/* SECTION: POPULAR CITIES */}
         <section className="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 relative z-10">

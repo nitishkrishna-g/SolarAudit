@@ -41,15 +41,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
     );
 }
 
-function AdBreak() {
-    return (
-        <Reveal>
-            <div className="my-10 bg-slate-100 dark:bg-slate-800/60 rounded-xl h-24 flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-700">
-                <span className="text-xs text-slate-400 uppercase tracking-wider">Advertisement</span>
-            </div>
-        </Reveal>
-    );
-}
+
 
 function ChapterHeading({ id, emoji, number, title, subtitle }: { id: string; emoji: string; number: string; title: string; subtitle: string }) {
     return (
@@ -373,7 +365,7 @@ export function GuidesContent() {
                             </div>
                         </Reveal>
 
-                        <AdBreak />
+
 
                         {/* ── CHAPTER 2: HARDWARE ──────────────────────── */}
                         <ChapterHeading
@@ -459,7 +451,7 @@ export function GuidesContent() {
                             </div>
                         </Reveal>
 
-                        <AdBreak />
+
 
                         {/* Panels */}
                         <Reveal>
@@ -710,7 +702,7 @@ export function GuidesContent() {
                             />
                         </Reveal>
 
-                        <AdBreak />
+
 
                         {/* ── CHAPTER 4: MAINTENANCE ───────────────────── */}
                         <ChapterHeading
@@ -870,10 +862,7 @@ export function GuidesContent() {
                 </div>
             </div>
 
-            {/* Mobile Sticky Footer Ad */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-slate-900 border-t border-border-color h-14 flex items-center justify-center shadow-lg">
-                <span className="text-xs text-slate-400 uppercase tracking-wider">Advertisement</span>
-            </div>
+
         </div>
     );
 }
