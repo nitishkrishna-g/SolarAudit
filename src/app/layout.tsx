@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import Script from "next/script";
+import { CookieConsent } from "@/components/core/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -42,6 +43,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_personalization': 'denied',
+                'ad_user_data': 'denied',
+                'analytics_storage': 'denied'
+              });
+            `,
+          }}
+        />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
@@ -51,6 +66,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} antialiased`}>
         <Providers>{children}</Providers>
+        <CookieConsent />
       </body>
     </html>
   );

@@ -191,6 +191,66 @@ export function PrivacyPolicyContent() {
                         </Reveal>
 
                         <Reveal>
+                            <h2 className="flex items-center gap-3 mt-16 text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                                <span className="text-emerald-500 text-xl font-mono opacity-80 mt-1">07.</span> GDPR Data Protection Rights
+                            </h2>
+                            <p className="leading-relaxed mb-4">
+                                If you are a resident of the European Economic Area (EEA), you have certain data protection rights under the General Data Protection Regulation (GDPR). SolarAudit aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data.
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2 leading-relaxed">
+                                <li><strong>Right of access</strong> — You have the right to request copies of your personal data.</li>
+                                <li><strong>Right to rectification</strong> — You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.</li>
+                                <li><strong>Right to erasure</strong> — You have the right to request that we erase your personal data, under certain conditions.</li>
+                                <li><strong>Right to restrict processing</strong> — You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+                                <li><strong>Right to data portability</strong> — You have the right to request that we transfer the data that we have collected to another organisation, or directly to you, under certain conditions.</li>
+                            </ul>
+                            <p className="leading-relaxed mt-4">
+                                If you make a request, we have one month to respond to you. To exercise any of these rights, please contact us at <a href="mailto:legal@solaraudit.in" className="text-emerald-600 dark:text-emerald-400 hover:underline">legal@solaraudit.in</a>.
+                            </p>
+                        </Reveal>
+
+                        <Reveal>
+                            <h2 className="flex items-center gap-3 mt-16 text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                                <span className="text-emerald-500 text-xl font-mono opacity-80 mt-1">08.</span> CCPA Privacy Rights (California Residents)
+                            </h2>
+                            <p className="leading-relaxed mb-4">
+                                Under the California Consumer Privacy Act (CCPA), California consumers have the right to:
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2 leading-relaxed">
+                                <li>Request that a business that collects a consumer&apos;s personal data disclose the categories and specific pieces of personal data collected.</li>
+                                <li>Request that a business delete any personal data about the consumer that a business has collected.</li>
+                                <li>Request that a business that sells a consumer&apos;s personal data, not sell the consumer&apos;s personal data.</li>
+                            </ul>
+                            <p className="leading-relaxed mt-4">
+                                <strong>SolarAudit does not sell personal data.</strong> If you make a request, we have 30 days to respond. Please contact us at <a href="mailto:legal@solaraudit.in" className="text-emerald-600 dark:text-emerald-400 hover:underline">legal@solaraudit.in</a>.
+                            </p>
+                        </Reveal>
+
+                        <Reveal>
+                            <h2 className="flex items-center gap-3 mt-16 text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                                <span className="text-emerald-500 text-xl font-mono opacity-80 mt-1">09.</span> Children&apos;s Privacy
+                            </h2>
+                            <p className="leading-relaxed">
+                                SolarAudit does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best to promptly remove such information from our records. Our services are not directed at individuals under the age of 13.
+                            </p>
+                        </Reveal>
+
+                        <Reveal>
+                            <h2 className="flex items-center gap-3 mt-16 text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                                <span className="text-emerald-500 text-xl font-mono opacity-80 mt-1">10.</span> Data Retention
+                            </h2>
+                            <p className="leading-relaxed mb-4">
+                                We retain your personal data only for as long as necessary to provide you with our services and as described in this Privacy Policy. We will also retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2 leading-relaxed">
+                                <li><strong>Contact form submissions:</strong> Retained for 12 months, then permanently deleted.</li>
+                                <li><strong>Calculator usage data:</strong> Anonymised and aggregated. No personal data is retained from calculator use.</li>
+                                <li><strong>Cookie consent preferences:</strong> Stored locally in your browser. We do not store these on our servers.</li>
+                                <li><strong>Analytics data:</strong> Google Analytics data is retained for 14 months as per Google&apos;s default retention policy.</li>
+                            </ul>
+                        </Reveal>
+
+                        <Reveal>
                             <div className="mt-16 bg-gradient-to-br from-emerald-600 to-teal-700 text-white rounded-2xl p-8 md:p-12 text-center not-prose shadow-lg shadow-emerald-500/20">
                                 <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
                                 <p className="mb-8 opacity-90 max-w-lg mx-auto text-lg">

@@ -51,6 +51,7 @@ export function Footer() {
                                 { href: "/contact", label: "Contact" },
                                 { href: "/terms", label: "Terms of Service" },
                                 { href: "/privacy-policy", label: "Privacy Policy" },
+                                { href: "/disclaimer", label: "Disclaimer" },
                             ].map((link) => (
                                 <li key={link.href}>
                                     <Link

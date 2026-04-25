@@ -47,7 +47,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "monthly",
             priority: 0.4,
         },
+        {
+            url: `${baseUrl}/disclaimer`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.4,
+        },
     ];
+
+    const guideSlugs = [
+        "pm-surya-ghar-subsidy-2026",
+        "solar-panel-types-india",
+        "net-metering-explained",
+        "solar-inverter-buying-guide",
+        "solar-panel-maintenance",
+        "solar-roi-calculator-guide",
+    ];
+
+    const guideUrls: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
+        url: `${baseUrl}/guides/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+    }));
 
     const stateUrls: MetadataRoute.Sitemap = solarData.map((state) => ({
         url: `${baseUrl}/calculator/${state.slug}`,
@@ -65,5 +87,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     );
 
-    return [...staticRoutes, ...stateUrls, ...cityUrls];
+    return [...staticRoutes, ...guideUrls, ...stateUrls, ...cityUrls];
 }

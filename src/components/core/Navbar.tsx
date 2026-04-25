@@ -13,8 +13,8 @@ const navLinks = [
     { href: "/", label: "Home", icon: Home },
     { href: "/guides", label: "Guides", icon: BookOpen },
     { href: "/shop", label: "Shop", icon: ShoppingBag },
-    { href: "/privacy-policy", label: "Privacy", icon: Shield },
     { href: "/about", label: "About", icon: Users },
+    { href: "/contact", label: "Contact", icon: Shield },
 ];
 
 export function Navbar() {

@@ -115,9 +115,14 @@ export function RightRail() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Static Ad Placeholder */}
-            <div className="bg-slate-100 dark:bg-slate-800 rounded-xl h-48 flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-700">
-                <span className="text-xs text-slate-400">Ad Space</span>
+            {/* Related Links */}
+            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-5">
+                <h4 className="font-bold text-sm text-slate-900 dark:text-white mb-3">Quick Links</h4>
+                <ul className="space-y-2">
+                    <li><a href="/about" className="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">About SolarAudit</a></li>
+                    <li><a href="/shop" className="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Solar Store</a></li>
+                    <li><a href="/contact" className="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Contact Us</a></li>
+                </ul>
             </div>
         </motion.aside>
     );
