@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const canonicalUrl = `https://solaraudit.vercel.app/calculator/${stateSlug}`;
 
     return {
-        title: `Solar Panel Subsidy in ${stateData.name} (2026 Guide)`,
-        description: `Calculate your solar ROI in ${stateData.name}. Updated with 2026 PM Surya Ghar subsidy rates and ${stateData.discomName} tariffs. Get subsidy up to ₹${stateData.subsidyParams.cap.toLocaleString("en-IN")}.`,
+        title: `Solar Subsidy Calculator ${stateData.name} 2026 — ${stateData.discomName}`,
+        description: `Get up to ₹${stateData.subsidyParams.cap.toLocaleString("en-IN")} solar subsidy in ${stateData.name}. Calculate your exact payback period using live ${stateData.discomName} tariff rates and 2026 PM Surya Ghar data.`,
         alternates: {
             canonical: canonicalUrl,
         },
         openGraph: {
-            title: `Solar ROI in ${stateData.name} – 2026 Subsidy Calculator`,
-            description: `Calculate exact solar savings in ${stateData.name} with ${stateData.discomName} tariffs. PM Surya Ghar subsidy up to ₹${stateData.subsidyParams.cap.toLocaleString("en-IN")}.`,
+            title: `Solar Subsidy Calculator ${stateData.name} 2026 — ${stateData.discomName}`,
+            description: `Get up to ₹${stateData.subsidyParams.cap.toLocaleString("en-IN")} solar subsidy in ${stateData.name}. Calculate your exact payback period using live ${stateData.discomName} tariff rates and 2026 PM Surya Ghar data.`,
             url: canonicalUrl,
             siteName: "SolarAudit",
             locale: "en_IN",
@@ -48,8 +48,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
         twitter: {
             card: "summary_large_image",
-            title: `Solar Panel Subsidy in ${stateData.name} (2026)`,
-            description: `Calculate your solar ROI in ${stateData.name}. Updated with 2026 PM Surya Ghar subsidy rates.`,
+            title: `Solar Subsidy Calculator ${stateData.name} 2026 — ${stateData.discomName}`,
+            description: `Get up to ₹${stateData.subsidyParams.cap.toLocaleString("en-IN")} solar subsidy in ${stateData.name}. Calculate exact payback with live ${stateData.discomName} tariff data.`,
         },
     };
 }
@@ -93,7 +93,7 @@ export default async function StatePage({ params }: PageProps) {
                     {
                         "@type": "ListItem",
                         position: 3,
-                        name: stateData.name,
+                        name: `${stateData.name} Solar Subsidy Calculator`,
                         item: `https://solaraudit.vercel.app/calculator/${stateSlug}`,
                     },
                 ],
@@ -205,7 +205,7 @@ export default async function StatePage({ params }: PageProps) {
                         </div>
 
                         <div className="flex justify-center mb-16">
-                            <Calculator />
+                            <Calculator defaultStateSlug={stateSlug} />
                         </div>
                     </div>
                 </section>
@@ -376,11 +376,12 @@ export default async function StatePage({ params }: PageProps) {
                                             <Link
                                                 key={s.slug}
                                                 href={`/calculator/${s.slug}`}
-                                                title={`Solar panel subsidy calculator for ${s.name}`}
-                                                aria-label={`Solar panel subsidy calculator for ${s.name}`}
-                                                className="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors border border-slate-200 dark:border-slate-700"
+                                                title={`Solar panel subsidy calculator ${s.name} 2026`}
+                                                aria-label={`Solar panel subsidy calculator ${s.name} 2026`}
+                                                className="px-4 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors border border-slate-200 dark:border-slate-700 flex flex-col gap-0.5"
                                             >
-                                                {s.name}
+                                                <span className="text-sm font-semibold leading-tight">{s.name}</span>
+                                                <span className="text-[10px] text-slate-400 dark:text-slate-500">Solar subsidy calculator</span>
                                             </Link>
                                         ))}
                                 </div>

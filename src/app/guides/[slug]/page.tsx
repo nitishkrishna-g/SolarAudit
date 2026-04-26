@@ -5,7 +5,7 @@ import { Footer } from "@/components/core/Footer";
 import { Fireflies } from "@/components/ui/fireflies";
 import { guideArticles } from "@/data/guidesArticles";
 import Link from "next/link";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { GuideBody } from "@/components/guides/GuideBody";
 import { ReadingProgress } from "@/components/guides/ReadingProgress";
 import { ArticleChapterSidebar } from "@/components/guides/ArticleChapterSidebar";
@@ -182,6 +182,47 @@ export default async function GuidePage({ params }: PageProps) {
                         <main className="flex-1 min-w-0 max-w-3xl">
                             {/* Guide Content (animated articles) */}
                             <GuideBody slug={slug} />
+
+                            {/* State Calculator Hub — shown for subsidy/policy/finance/installation guides */}
+                            {["Subsidies", "Policy", "Finance", "Installation"].includes(article.category) && (
+                                <Reveal>
+                                    <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+                                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
+                                            Calculate Subsidy for Your State
+                                        </h3>
+                                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-5">
+                                            Get exact savings based on your DISCOM tariff and 2026 PM Surya Ghar rates.
+                                        </p>
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                            {[
+                                                { name: "Gujarat", slug: "gujarat", discom: "UGVCL" },
+                                                { name: "Maharashtra", slug: "maharashtra", discom: "MSEDCL" },
+                                                { name: "Karnataka", slug: "karnataka", discom: "BESCOM" },
+                                                { name: "Delhi", slug: "delhi", discom: "BSES" },
+                                                { name: "Tamil Nadu", slug: "tamil-nadu", discom: "TANGEDCO" },
+                                                { name: "Uttar Pradesh", slug: "uttar-pradesh", discom: "UPPCL" },
+                                            ].map((state) => (
+                                                <Link
+                                                    key={state.slug}
+                                                    href={`/calculator/${state.slug}`}
+                                                    title={`Solar subsidy calculator ${state.name} 2026 — ${state.discom}`}
+                                                    className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 hover:bg-emerald-50 dark:hover:bg-emerald-900/10 transition-all duration-200"
+                                                >
+                                                    <div>
+                                                        <div className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                                            {state.name}
+                                                        </div>
+                                                        <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">
+                                                            {state.discom} · Solar subsidy calculator
+                                                        </div>
+                                                    </div>
+                                                    <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-emerald-500 transition-colors shrink-0" />
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </Reveal>
+                            )}
 
                             {/* FAQ Section */}
                             <Reveal>

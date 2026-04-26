@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+@theme inline {
   --font-sans: Inter, sans-serif;
   
   --color-background: var(--background);
@@ -13,7 +13,7 @@
 }
 
 /* Custom variant for dark mode class strategy */
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   /* Light Mode Palette */

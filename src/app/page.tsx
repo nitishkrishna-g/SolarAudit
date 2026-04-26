@@ -198,6 +198,46 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SECTION: STATE CALCULATOR HUB — keyword-rich internal links to state pages */}
+        <section className="py-10 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+                Solar Subsidy Calculators by State
+              </h2>
+              <span className="text-xs text-slate-400 dark:text-slate-500">2026 PM Surya Ghar rates</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {[
+                { name: "Gujarat", slug: "gujarat", discom: "UGVCL" },
+                { name: "Maharashtra", slug: "maharashtra", discom: "MSEDCL" },
+                { name: "Karnataka", slug: "karnataka", discom: "BESCOM" },
+                { name: "Delhi", slug: "delhi", discom: "BSES" },
+                { name: "Tamil Nadu", slug: "tamil-nadu", discom: "TANGEDCO" },
+                { name: "Uttar Pradesh", slug: "uttar-pradesh", discom: "UPPCL" },
+              ].map((state) => (
+                <Link
+                  key={state.slug}
+                  href={`/calculator/${state.slug}`}
+                  title={`Solar panel subsidy calculator ${state.name} 2026 — ${state.discom}`}
+                  aria-label={`Solar subsidy calculator for ${state.name}`}
+                  className="group p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-emerald-500/50 hover:shadow-md hover:shadow-emerald-500/5 transition-all duration-200"
+                >
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">
+                    {state.discom}
+                  </div>
+                  <div className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+                    {state.name}
+                  </div>
+                  <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-1">
+                    Solar subsidy calculator
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* SECTION: PROBLEM AGITATION */}
         <section className="py-16 bg-slate-50 dark:bg-slate-950 relative z-10">
           <div className="container mx-auto px-4 max-w-4xl text-center">

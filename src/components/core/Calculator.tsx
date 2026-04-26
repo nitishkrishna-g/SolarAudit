@@ -22,12 +22,14 @@ import { calculateSolar } from "@/utils/calculator";
 import { cn } from "@/lib/utils";
 import { LeadModal } from "@/components/LeadModal";
 
-export function Calculator({ onCalculationComplete }: { onCalculationComplete?: () => void }) {
+export function Calculator({ onCalculationComplete, defaultStateSlug }: { onCalculationComplete?: () => void; defaultStateSlug?: string }) {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     // Form State
-    const [selectedState, setSelectedState] = useState<StateData | null>(null);
+    const [selectedState, setSelectedState] = useState<StateData | null>(
+        defaultStateSlug ? (solarData.find(s => s.slug === defaultStateSlug) ?? null) : null
+    );
     const [billAmount, setBillAmount] = useState(4500);
     const [roofArea, setRoofArea] = useState(500); // Default 500 sq ft
     const [roofType, setRoofType] = useState<"concrete" | "tiled">("concrete");
@@ -113,8 +115,8 @@ export function Calculator({ onCalculationComplete }: { onCalculationComplete?: 
             {/* Input Section */}
             <div className="p-6 space-y-8">
 
-                {/* State Selector */}
-                <div className="space-y-3 relative z-20">
+                {/* State Selector — hidden when state is already set by the page */}
+                <div className={`space-y-3 relative z-20${defaultStateSlug ? " hidden" : ""}`}>
                     <label className="text-sm font-medium text-text-secondary block">Select your state</label>
                     <div className="relative">
                         <Button

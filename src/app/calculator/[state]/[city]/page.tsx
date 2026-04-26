@@ -45,12 +45,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         };
     }
 
-    const city = stateData.cities.find(c => c.toLowerCase().replace(/ /g, "-") === cityParam) || cityParam;
-    const cityName = city === cityParam ? city.charAt(0).toUpperCase() + city.slice(1) : city;
+    const richCity = stateData.cityData?.find(c => c.slug === cityParam);
+    const city = richCity?.name ?? (stateData.cities.find(c => c.toLowerCase().replace(/ /g, "-") === cityParam) || cityParam);
+    const cityName = typeof city === "string" && city === cityParam
+        ? city.charAt(0).toUpperCase() + city.slice(1)
+        : city as string;
 
     return {
-        title: `Solar Installer in ${cityName} - ${stateData.name} Subsidy Check`,
-        description: `Stop paying high bills to ${stateData.discomName}. Find verified installers in ${cityName} and check your subsidy eligibility.`,
+        title: `Solar Panel Subsidy ${cityName} 2026 — ${stateData.name} Calculator`,
+        description: `Calculate your PM Surya Ghar subsidy for ${cityName}. ${stateData.discomName} net metering rates included. Get up to ₹78,000 off — check your savings in 30 seconds.`,
+        alternates: {
+            canonical: `https://solaraudit.vercel.app/calculator/${stateSlug}/${cityParam}`,
+        },
+        openGraph: {
+            title: `Solar Panel Subsidy ${cityName} 2026 — ${stateData.name} Calculator`,
+            description: `Calculate your PM Surya Ghar subsidy for ${cityName}. ${stateData.discomName} net metering rates included. Get up to ₹78,000 off.`,
+            url: `https://solaraudit.vercel.app/calculator/${stateSlug}/${cityParam}`,
+            siteName: "SolarAudit",
+            locale: "en_IN",
+            type: "article",
+        },
     };
 }
 
@@ -104,7 +118,7 @@ export default async function CityPage({ params }: PageProps) {
                         <div className="flex justify-center mb-16 relative">
                             {/* Glow behind calculator */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-emerald-500/5 blur-3xl rounded-full -z-10" />
-                            <Calculator />
+                            <Calculator defaultStateSlug={stateSlug} />
                         </div>
                     </div>
                 </section>
@@ -245,42 +259,37 @@ export default async function CityPage({ params }: PageProps) {
                     </div>
                 </section>
 
-                {/* Service Schema for Local SEO */}
+                {/* Combined JSON-LD: BreadcrumbList + Service */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
-                            "@type": "Service",
-                            "serviceType": "Solar Panel Installation",
-                            "provider": {
-                                "@type": "Organization",
-                                "name": "SolarAudit"
-                            },
-                            "areaServed": {
-                                "@type": "City",
-                                "name": city
-                            },
-                            "hasOfferCatalog": {
-                                "@type": "OfferCatalog",
-                                "name": "Solar Installation Services",
-                                "itemListElement": [
-                                    {
-                                        "@type": "Offer",
-                                        "itemOffered": {
-                                            "@type": "Service",
-                                            "name": "Residential Rooftop Solar"
-                                        }
-                                    },
-                                    {
-                                        "@type": "Offer",
-                                        "itemOffered": {
-                                            "@type": "Service",
-                                            "name": "Commercial Solar Solutions"
-                                        }
+                            "@graph": [
+                                {
+                                    "@type": "BreadcrumbList",
+                                    "itemListElement": [
+                                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://solaraudit.vercel.app" },
+                                        { "@type": "ListItem", "position": 2, "name": "Solar Calculator", "item": "https://solaraudit.vercel.app/calculator" },
+                                        { "@type": "ListItem", "position": 3, "name": `${stateData.name} Solar Subsidy Calculator`, "item": `https://solaraudit.vercel.app/calculator/${stateSlug}` },
+                                        { "@type": "ListItem", "position": 4, "name": `Solar Panel Subsidy ${city}`, "item": `https://solaraudit.vercel.app/calculator/${stateSlug}/${cityParam}` },
+                                    ]
+                                },
+                                {
+                                    "@type": "Service",
+                                    "serviceType": "Solar Panel Installation",
+                                    "provider": { "@type": "Organization", "name": "SolarAudit" },
+                                    "areaServed": { "@type": "City", "name": city },
+                                    "hasOfferCatalog": {
+                                        "@type": "OfferCatalog",
+                                        "name": "Solar Installation Services",
+                                        "itemListElement": [
+                                            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Rooftop Solar" } },
+                                            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Solar Solutions" } }
+                                        ]
                                     }
-                                ]
-                            }
+                                }
+                            ]
                         })
                     }}
                 />
