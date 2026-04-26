@@ -167,6 +167,75 @@ export function PmSuryaGhar() {
                     For a personalised estimate of your savings after subsidy, use our <a href="/#calculator-section" className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">free Solar ROI Calculator</a> which uses real DISCOM tariff data and the latest 2026 subsidy rates.
                 </p>
             </Reveal>
+
+            <SectionHeading id="state-subsidy-table" emoji="🗺️" title="State-Wise Subsidy Comparison (2026)" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    The central government provides a fixed subsidy under PM Surya Ghar. Several states layer additional incentives on top. Here is the complete picture for the six largest solar adoption states in India as of April 2026:
+                </p>
+            </Reveal>
+            <Reveal>
+                <div className="overflow-x-auto mb-4">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100 dark:bg-slate-800">
+                                {["State", "DISCOM", "Central Subsidy (3kW)", "State Top-Up", "Extra Incentive", "Total Max"].map((h) => (
+                                    <th key={h} className="p-3 text-left border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white text-xs">{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody className="text-slate-600 dark:text-slate-400 text-xs">
+                            {[
+                                ["Uttar Pradesh", "UPPCL", "₹78,000", "₹30,000 (UPNEDA)", "—", "₹1,08,000"],
+                                ["Delhi", "BSES / Tata Power", "₹78,000", "₹10,000", "₹3/unit GBI (5 yr)", "₹88,000 + GBI"],
+                                ["Maharashtra", "MSEDCL", "₹78,000", "—", "—", "₹78,000"],
+                                ["Karnataka", "BESCOM", "₹78,000", "—", "—", "₹78,000"],
+                                ["Gujarat", "GUVNL", "₹78,000", "—", "₹2.25/unit buyback", "₹78,000 + buyback"],
+                                ["Tamil Nadu", "TANGEDCO", "₹78,000", "—", "Annual credit settlement", "₹78,000"],
+                            ].map(([state, discom, central, state_top, extra, total]) => (
+                                <tr key={state} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white">{state}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{discom}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 font-bold">{central}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 text-blue-600 dark:text-blue-400">{state_top}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{extra}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white">{total}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </Reveal>
+            <InfoBox variant="tip">
+                UP residents installing a 3kW system receive ₹1,08,000 in total subsidies — the highest combined incentive in India. This cuts the net system cost to approximately ₹72,000, giving a payback period of under 18 months.
+            </InfoBox>
+
+            <SectionHeading id="budget-update-2026" emoji="📰" title="2026 Budget Update: What Changed" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    The Union Budget 2026 brought several changes to the PM Surya Ghar scheme that directly affect homeowners applying this year. Understanding what changed helps you plan your application correctly and avoid delays caused by outdated information.
+                </p>
+            </Reveal>
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-3 mb-8">
+                {[
+                    { icon: "🆙", title: "System Cap Raised to 10 kW", desc: "Previously capped at 3 kW for maximum subsidy eligibility. Now homes with higher consumption can install up to 10 kW and still receive the ₹78,000 central subsidy. The subsidy amount itself does not increase beyond ₹78,000 for systems over 3 kW." },
+                    { icon: "⚡", title: "Faster DISCOM Approvals Mandated", desc: "The 2026 guidelines require DISCOMs to complete feasibility approval within 15 working days (reduced from 30 days). Delays beyond this window now trigger automatic escalation to the state SERC." },
+                    { icon: "🏦", title: "Collateral-Free Loans Up to ₹2 Lakh", desc: "Nationalised banks are now required under the scheme to offer collateral-free solar loans of up to ₹2 lakh at concessional rates of 7–8% per annum. This removes the biggest financial barrier for middle-income households." },
+                    { icon: "🏗️", title: "Empanelled Vendor List Expanded", desc: "MNRE expanded the approved installer network by 40% in Q1 2026, adding manufacturers from tier-2 cities. This means faster on-ground availability and better price competition in cities like Nagpur, Coimbatore, and Jaipur." },
+                    { icon: "📲", title: "Single-Window Portal Enhancement", desc: "The national portal at pmsuryaghar.gov.in now provides real-time application status tracking, direct DISCOM communication, and one-click grievance filing — replacing the previous multi-step complaint process." },
+                ].map((item, i) => (
+                    <motion.div key={i} variants={fadeUp} className="flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+                        <span className="text-xl shrink-0">{item.icon}</span>
+                        <div>
+                            <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{item.title}</h4>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </motion.div>
+            <InfoBox variant="info">
+                <strong>Applications that were rejected in 2024–25</strong> under the previous system cap may now be eligible under the 2026 revised guidelines. If your earlier application was rejected for exceeding sanctioned load, you can now reapply with an updated capacity selection.
+            </InfoBox>
         </>
     );
 }

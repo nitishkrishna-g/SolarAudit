@@ -136,6 +136,59 @@ export function ShopContent() {
 
                     {/* Product Grid */}
                     <div className="flex-grow">
+                        {/* Category editorial introductions */}
+                        {selectedCategory === "All" && (
+                            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-slate-900 dark:text-white mb-2 text-base">How We Select Products</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Every product on this page is independently reviewed by our editorial team against three criteria: build quality for Indian climate conditions (heat, humidity, dust), verified customer ratings above 4.0 on Amazon India, and appropriate price-to-performance ratio for residential use. We do not accept manufacturer payments for placement. Affiliate commissions are earned at the same rate regardless of which product you choose, so our recommendations are never influenced by commission size. Use the category filters to find guides for each product type.
+                                </p>
+                            </div>
+                        )}
+                        {selectedCategory === "Inverters" && (
+                            <div className="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-emerald-800 dark:text-emerald-300 mb-2 text-base">How to Choose a Solar Inverter</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                                    The inverter converts DC electricity from your panels into the AC power your home appliances use. It is the most critical component for long-term system performance — a low-quality inverter can waste 10–15% of your generation, costing ₹400–600 per month in lost savings. For most Indian residential systems (3–5kW), a <strong className="text-slate-800 dark:text-slate-300">string inverter</strong> is the best value choice. Choose a <strong className="text-slate-800 dark:text-slate-300">hybrid inverter</strong> only if you plan to add battery storage. Micro inverters are worth their premium only for roofs with significant shading. Minimum warranty to accept: 5 years. Check that the brand has an active service centre in your city before purchasing.
+                                </p>
+                                <a href="/guides/solar-inverter-buying-guide" className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">Read our full Inverter Buying Guide &rarr;</a>
+                            </div>
+                        )}
+                        {selectedCategory === "Panels" && (
+                            <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-amber-800 dark:text-amber-300 mb-2 text-base">Which Solar Panel Brand to Trust in India</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                                    Only purchase panels from brands on MNRE's Approved List of Models and Manufacturers (ALMM) — non-listed panels disqualify you from PM Surya Ghar subsidy. For Indian conditions, prioritise Mono-PERC technology over polycrystalline: the 15–20% price premium is recovered within 2–3 years through higher generation. Look for a temperature coefficient better than -0.40%/°C and a 25-year linear performance warranty guaranteeing at least 80% output at year 25. Tier-1 Indian manufacturers — WAAREE, Adani Solar, Vikram Solar, Tata Power Solar — all meet these benchmarks and have reliable domestic warranty support.
+                                </p>
+                                <a href="/guides/solar-panel-types-india" className="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline">Read our full Panel Technology Guide &rarr;</a>
+                            </div>
+                        )}
+                        {selectedCategory === "Cleaning Kits" && (
+                            <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-blue-800 dark:text-blue-300 mb-2 text-base">Essential Accessories for Long Panel Life</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                                    Regular cleaning is the single highest-ROI maintenance action a solar owner can take. In North Indian cities, uncleaned panels lose 20–30% of their output within two weeks of dust accumulation — costing ₹500–750 per month in lost savings. The right cleaning kit for Indian conditions: a telescopic aluminium pole (3–5 metres) with a swivel soft nylon brush head, plus a garden hose with a gentle spray attachment. Avoid: metal bristle brushes (scratch anti-reflective coating), detergents (leave residue), and high-pressure washers (damage panel seals). Clean in the early morning or evening when panels are cool.
+                                </p>
+                                <a href="/guides/solar-panel-maintenance" className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline">Read our full Maintenance Guide &rarr;</a>
+                            </div>
+                        )}
+                        {selectedCategory === "Batteries" && (
+                            <div className="bg-violet-50 dark:bg-violet-900/10 border border-violet-200 dark:border-violet-800/50 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-violet-800 dark:text-violet-300 mb-2 text-base">Do You Actually Need a Battery?</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                                    Battery storage adds ₹60,000–₹1,50,000 to your system cost and extends payback by 12–24 months. For most urban households with grid reliability above 22 hours per day, a grid-tied system without battery gives better financial returns. Batteries are worth the investment if: your area receives more than 2 hours of daily power cuts on average, or you have critical loads (medical equipment, home office) that cannot tolerate outages. If you decide to add a battery, choose LiFePO4 chemistry — safer, longer cycle life (3,000+ cycles vs 500–800 for lead-acid), and better temperature tolerance for Indian conditions.
+                                </p>
+                            </div>
+                        )}
+                        {selectedCategory === "Gadgets" && (
+                            <div className="bg-teal-50 dark:bg-teal-900/10 border border-teal-200 dark:border-teal-800/50 rounded-2xl p-5 mb-6">
+                                <h2 className="font-bold text-teal-800 dark:text-teal-300 mb-2 text-base">Smart Monitoring: Know What Your System is Doing</h2>
+                                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                                    Solar monitoring tools let you track real-time generation, identify underperforming panels, and detect faults within hours rather than weeks. Most modern inverters include a Wi-Fi monitoring module — check that yours is activated and that you can see daily generation data in the app. Third-party energy monitors add a layer of independent verification, ensuring your DISCOM's net meter readings match your own records. This is especially useful when disputing a billing error with your DISCOM in the first year of operation.
+                                </p>
+                            </div>
+                        )}
+
                         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                             {filteredProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Sun radial gradient — bright centre to deep orange edge -->
+    <radialGradient id="sg" cx="50" cy="60" r="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#FFE566"/>
+      <stop offset="35%"  stop-color="#FFC107"/>
+      <stop offset="75%"  stop-color="#FF8C00"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </radialGradient>
+    <!-- Panel subtle gradient (slightly lighter top) -->
+    <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#A0B4C8"/>
+      <stop offset="100%" stop-color="#7C91A6"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    14-ray sun star polygon.
+    Outer radius = 37, inner radius = 21, centre (50, 60).
+    Points computed at -90° start, step = 360/14 ≈ 25.714°
+    Alternating outer / inner, 28 vertices total.
+    (Bottom rays will be hidden under the panel.)
+  -->
+  <polygon fill="url(#sg)" points="
+    50,23  55,41  66,27  63,44  79,37  68,51
+    86,52  70,60  86,68  68,69  79,83  63,76
+    66,93  55,80  50,97  46,80  34,93  38,76
+    21,83  32,69  14,68  30,60  14,52  32,51
+    21,37  38,44  34,27  46,41
+  "/>
+
+  <!-- Solar panel — covers bottom half of sun naturally -->
+  <!-- Main body -->
+  <rect x="5" y="57" width="90" height="31" rx="4" fill="url(#pg)"/>
+  <!-- Cell separators (vertical) -->
+  <line x1="35" y1="57" x2="35" y2="88" stroke="#5B7A93" stroke-width="1.8"/>
+  <line x1="65" y1="57" x2="65" y2="88" stroke="#5B7A93" stroke-width="1.8"/>
+  <!-- Cell separator (horizontal) -->
+  <line x1="5"  y1="72" x2="95" y2="72" stroke="#5B7A93" stroke-width="1.8"/>
+  <!-- 3-D bottom edge -->
+  <rect x="6" y="86" width="88" height="6" rx="3" fill="#4A6880"/>
+</svg>

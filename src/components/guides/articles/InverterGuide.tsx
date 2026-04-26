@@ -140,6 +140,72 @@ export function InverterGuide() {
                     Check our <a href="/shop" className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">Solar Store</a> for current prices. Use our <a href="/#calculator-section" className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium">ROI Calculator</a> to see how inverter efficiency affects your 25-year savings.
                 </p>
             </Reveal>
+
+            <SectionHeading id="inverter-errors" emoji="⚠️" title="Common Inverter Error Codes & Fixes" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    Most Indian homeowners encounter at least one inverter error in the first year of operation. The majority of errors are self-resolvable — knowing what each code means prevents unnecessary service calls and weeks of lost generation. These are the most frequently reported error codes across Growatt, Goodwe, Havells, and Microtek inverters used in Indian installations:
+                </p>
+            </Reveal>
+            <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }} className="space-y-3 mb-8">
+                {[
+                    { code: "Grid Over-Voltage (OVP)", colour: "rose", icon: "🔴", cause: "Grid voltage exceeds 253V — common in areas with poor grid regulation.", fix: "The inverter auto-shuts for protection. Usually self-resolves within minutes. If persistent, log a complaint with your DISCOM — over-voltage damages appliances and is their responsibility to fix." },
+                    { code: "Ground Fault / GFCI Trip", colour: "rose", icon: "🔴", cause: "A panel string or DC wire has come in contact with the mounting structure, creating a ground path.", fix: "Do not attempt DIY repair — call your installer. This is a safety hazard that requires a licensed electrician to isolate the faulty string." },
+                    { code: "No Grid / Grid Lost (F04)", colour: "amber", icon: "🟡", cause: "Inverter cannot detect the grid — usually during a power cut or a blown main fuse.", fix: "Check your main MCB. If there is a power cut in your area, the inverter will restart automatically once grid is restored. This is normal and expected behaviour." },
+                    { code: "DC Over-Voltage", colour: "amber", icon: "🟡", cause: "String voltage exceeds inverter&apos;s rated input — often from too many panels in series, or extreme cold weather.", fix: "Count the panels in each string and verify they do not exceed the MPPT voltage range listed in your inverter spec sheet. Reconfigure strings if needed." },
+                    { code: "Low Insulation Resistance (ISO)", colour: "amber", icon: "🟡", cause: "Moisture has entered panel lamination or conduit — common after heavy monsoon or old wiring.", fix: "Clean and dry all conduit entry points. Re-inspect MC4 connectors for water ingress. Replace damaged connectors immediately." },
+                    { code: "PV String Reversed (F01)", colour: "blue", icon: "🔵", cause: "Positive and negative DC wires have been crossed during installation — typically a wiring error.", fix: "Switch off the AC and DC isolators completely. Have your installer reverse the polarity of the affected string. This should not occur if installed correctly." },
+                ].map((item, i) => (
+                    <motion.div key={i} variants={fadeUp} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                            <span>{item.icon}</span>
+                            <h4 className="font-bold text-slate-900 dark:text-white text-sm">{item.code}</h4>
+                        </div>
+                        <p className="text-xs text-slate-500 dark:text-slate-500 mb-1"><strong className="text-slate-600 dark:text-slate-400">Cause:</strong> {item.cause}</p>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"><strong className="text-slate-700 dark:text-slate-300">Fix:</strong> {item.fix}</p>
+                    </motion.div>
+                ))}
+            </motion.div>
+            <InfoBox variant="tip">
+                Most inverters now have a companion mobile app (Growatt ShinePhone, Goodwe SEMS Portal, Havells Solar App). Enable notifications so you receive an alert the moment an error is logged — catching faults within hours rather than days can save weeks of lost generation.
+            </InfoBox>
+
+            <SectionHeading id="inverter-brands-india" emoji="🇮🇳" title="Inverter Brands Sold in India: What to Know" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    The Indian market has over 40 inverter brands. Many are imported with minimal after-sales service networks, making warranty claims difficult. Based on installer feedback from across Maharashtra, Karnataka, UP, and Delhi, here is a frank assessment of the brands you will actually encounter:
+                </p>
+            </Reveal>
+            <Reveal>
+                <div className="overflow-x-auto mb-8">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100 dark:bg-slate-800">
+                                {["Brand", "Origin", "Service Network", "Our Take"].map((h) => (
+                                    <th key={h} className="p-3 text-left border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white text-xs">{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody className="text-slate-600 dark:text-slate-400 text-xs">
+                            {[
+                                ["Growatt", "China (Indian distributor)", "Strong — 200+ service partners", "Most recommended for residential. Excellent app, reliable warranty."],
+                                ["Goodwe", "China (Indian office)", "Good — pan-India partners", "Strong hybrid range. Slightly pricier but solid support."],
+                                ["Havells", "India", "Excellent — own service centres", "Premium pricing but unmatched after-sales support across tier-2 cities."],
+                                ["Luminous", "India", "Excellent — 80,000+ touchpoints", "Best choice if service accessibility is your priority. Widely available."],
+                                ["Microtek", "India", "Good — north India strength", "Value-for-money. Strong presence in UP, Delhi, Punjab markets."],
+                                ["Enphase (micro)", "USA (Indian distributor)", "Limited", "Best technology but expensive and limited local service. Urban areas only."],
+                            ].map(([brand, origin, service, take]) => (
+                                <tr key={brand} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white">{brand}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{origin}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{service}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{take}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </Reveal>
         </>
     );
 }

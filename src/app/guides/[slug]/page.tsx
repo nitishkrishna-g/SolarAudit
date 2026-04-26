@@ -8,6 +8,8 @@ import Link from "next/link";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { GuideBody } from "@/components/guides/GuideBody";
 import { ReadingProgress } from "@/components/guides/ReadingProgress";
+import { ArticleChapterSidebar } from "@/components/guides/ArticleChapterSidebar";
+import { ArticleRightRail } from "@/components/guides/ArticleRightRail";
 import {
     AnimatedHero, AnimatedBadge, AnimatedTocPills,
     AnimatedFaq, AnimatedCTA, AnimatedRelatedCard, Reveal,
@@ -72,9 +74,15 @@ export default async function GuidePage({ params }: PageProps) {
                 "@type": "Article",
                 headline: article.title,
                 description: article.metaDescription,
-                dateModified: "2026-04-01",
-                author: { "@type": "Organization", name: "SolarAudit", url: "https://solaraudit.vercel.app" },
-                publisher: { "@type": "Organization", name: "SolarAudit" },
+                dateModified: "2026-04-15",
+                datePublished: "2026-01-01",
+                author: {
+                    "@type": "Person",
+                    name: article.author,
+                    jobTitle: article.authorTitle,
+                    url: "https://solaraudit.vercel.app/about",
+                },
+                publisher: { "@type": "Organization", name: "SolarAudit", url: "https://solaraudit.vercel.app" },
             },
             {
                 "@type": "FAQPage",
@@ -133,10 +141,24 @@ export default async function GuidePage({ params }: PageProps) {
 
                                 <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-4">
                                     {article.heroSubtitle}
-                                    <span className="block mt-2 font-medium text-slate-900 dark:text-slate-200">
-                                        By SolarAudit Editorial • {article.readTime} read
-                                    </span>
                                 </p>
+
+                                {/* Author byline */}
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-emerald-500/30">
+                                        {article.author.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <div className="flex items-center gap-2 flex-wrap">
+                                            <span className="font-semibold text-sm text-slate-900 dark:text-white">{article.author}</span>
+                                            <span className="text-slate-400 dark:text-slate-500 text-xs">•</span>
+                                            <span className="text-xs text-slate-500 dark:text-slate-400">{article.authorTitle}</span>
+                                        </div>
+                                        <div className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                                            Reviewed {article.reviewedDate} &nbsp;·&nbsp; {article.readTime} read
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {/* Chapter Pills */}
                                 <AnimatedTocPills
@@ -153,38 +175,11 @@ export default async function GuidePage({ params }: PageProps) {
                 {/* ── CONTENT ────────────────────────────────────── */}
                 <div className="container mx-auto px-4 py-12">
                     <div className="flex items-start gap-8 xl:gap-12">
-                        {/* Sidebar TOC — Desktop */}
-                        <aside className="hidden lg:flex flex-col gap-2 w-52 shrink-0 sticky top-24 h-fit">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">Contents</h3>
-                            <nav className="space-y-1 border-l-2 border-slate-200 dark:border-slate-800">
-                                {article.toc.map((item) => (
-                                    <a
-                                        key={item.id}
-                                        href={`#${item.id}`}
-                                        className="block text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-1.5 pl-4 -ml-[2px] border-l-2 border-transparent hover:border-emerald-500"
-                                    >
-                                        {item.label}
-                                    </a>
-                                ))}
-                            </nav>
-                        </aside>
+                        {/* Left chapter navigator — same style as main guides page */}
+                        <ArticleChapterSidebar toc={article.toc} />
 
                         {/* Article Body */}
                         <main className="flex-1 min-w-0 max-w-3xl">
-                            {/* Mobile TOC */}
-                            <Reveal>
-                                <div className="lg:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 mb-8 shadow-sm">
-                                    <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">In This Article</h3>
-                                    <nav className="space-y-2">
-                                        {article.toc.map((item) => (
-                                            <a key={item.id} href={`#${item.id}`} className="block text-sm text-emerald-600 dark:text-emerald-400 py-0.5">
-                                                → {item.label}
-                                            </a>
-                                        ))}
-                                    </nav>
-                                </div>
-                            </Reveal>
-
                             {/* Guide Content (animated articles) */}
                             <GuideBody slug={slug} />
 
@@ -230,6 +225,18 @@ export default async function GuidePage({ params }: PageProps) {
                                 </div>
                             </Reveal>
                         </main>
+
+                        {/* Right affiliate rail — same style as main guides page */}
+                        <ArticleRightRail
+                            category={article.category}
+                            toc={article.toc}
+                            related={related.map((r) => ({
+                                href: `/guides/${r.slug}`,
+                                category: r.category,
+                                title: r.title,
+                                readTime: r.readTime,
+                            }))}
+                        />
                     </div>
                 </div>
             </main>

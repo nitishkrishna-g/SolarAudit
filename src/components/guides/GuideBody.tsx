@@ -6,6 +6,7 @@ import { NetMetering } from "./articles/NetMetering";
 import { InverterGuide } from "./articles/InverterGuide";
 import { Maintenance } from "./articles/Maintenance";
 import { RoiGuide } from "./articles/RoiGuide";
+import { InstallationChecklist } from "./articles/InstallationChecklist";
 
 const articleMap: Record<string, React.FC> = {
     "pm-surya-ghar-subsidy-2026": PmSuryaGhar,
@@ -14,6 +15,7 @@ const articleMap: Record<string, React.FC> = {
     "solar-inverter-buying-guide": InverterGuide,
     "solar-panel-maintenance": Maintenance,
     "solar-roi-calculator-guide": RoiGuide,
+    "solar-installation-checklist-india": InstallationChecklist,
 };
 
 export function GuideBody({ slug }: { slug: string }) {

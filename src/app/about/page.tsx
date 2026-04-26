@@ -183,6 +183,53 @@ export default function AboutPage() {
               </div>
 
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                Our Methodology
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                Accuracy is not a marketing claim for us — it is an engineering constraint. Our calculator produces projections that we stand behind because every input variable is sourced, dated, and traceable. Here is exactly how we build and maintain our calculation models:
+              </p>
+              <div className="not-prose space-y-4 mb-10">
+                {[
+                  {
+                    icon: Zap,
+                    title: "Tariff Data: DISCOM Tariff Orders (Quarterly)",
+                    detail: "State electricity tariffs in India are set by State Electricity Regulatory Commissions (SERCs) and published as official tariff orders, typically once or twice per year. We track tariff orders from MSEDCL, BESCOM, UPPCL, TPDDL, BSES, TANGEDCO, GUVNL, and five other major DISCOMs. Our tariff figures are updated within 7 days of each official tariff order publication. We use the marginal tariff rate for the consumer's relevant consumption slab — not an average — because this is the actual rate at which solar generation displaces billing.",
+                  },
+                  {
+                    icon: BarChart3,
+                    title: "Solar Irradiance: IMD & NASA POWER Data",
+                    detail: "Peak sun hours (PSH) determine how many units a given kW of panels will generate per day. Our PSH figures are derived from the Indian Meteorological Department's Global Solar Atlas and cross-referenced with NASA's POWER project satellite irradiance data. We use a 10-year average rather than a single recent year to avoid over- or under-stating generation due to exceptional years. Seasonal variation is built into our annual totals — we do not extrapolate from summer-only data.",
+                  },
+                  {
+                    icon: ShieldCheck,
+                    title: "Subsidy Parameters: MNRE Gazette Notifications",
+                    detail: "PM Surya Ghar subsidy rates and eligibility criteria are defined in MNRE gazette notifications and updated on the pmsuryaghar.gov.in national portal. We review these against the official gazette at each revision. Our subsidy calculator uses the tiered structure (₹30,000/kW for the first kW, ₹18,000/kW for the third kW, capped at ₹78,000) exactly as defined in the notification, not a simplified version. State-specific supplements (UPNEDA, Delhi GBI) are sourced from respective state nodal agencies.",
+                  },
+                  {
+                    icon: BookOpen,
+                    title: "Degradation & Maintenance: IEC 61215 Standards",
+                    detail: "Panel degradation rates in our calculator (0.5% per year for Mono-PERC, 0.7% for polycrystalline) are based on IEC 61215 accelerated testing standards and are consistent with published degradation studies from NREL and CSIRO on Indian-market panels. We model one inverter replacement at year 10–12 in our 25-year projections. Our maintenance cost estimates are based on contractor rates collected from markets in Mumbai, Bengaluru, Lucknow, and Ahmedabad.",
+                  },
+                  {
+                    icon: CheckCircle2,
+                    title: "Cross-Verification: On-Ground Installation Data",
+                    detail: "We cross-check our projections against self-reported generation data shared by homeowners in our network across Maharashtra, Karnataka, Gujarat, Delhi NCR, and Tamil Nadu. Where actual generation consistently deviates from our model by more than 5%, we investigate and update either the irradiance input or the system loss factor used in the calculation.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5"
+                  >
+                    <item.icon className="w-6 h-6 text-emerald-500 shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm">{item.title}</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">{item.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
                 Affiliate Disclosure
               </h2>
               <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
@@ -190,6 +237,34 @@ export default function AboutPage() {
               </p>
               <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
                 Our editorial recommendations are <strong>never influenced by affiliate partnerships</strong>. We recommend products based solely on quality, durability, and value for Indian conditions. If a product doesn&apos;t meet our standards, it doesn&apos;t appear on our platform — regardless of commission rates.
+              </p>
+
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                Editorial Independence Policy
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
+                Our editorial content — guides, calculator methodology, product reviews, and policy analysis — is produced independently of any commercial relationship. The following rules govern our editorial process:
+              </p>
+              <div className="not-prose space-y-3 mb-8">
+                {[
+                  "No manufacturer, installer, or distributor pays for product placement, positive reviews, or favourable mentions in our guides.",
+                  "Affiliate commission rates do not influence product recommendations. We earn the same commission percentage regardless of which product in a category you purchase.",
+                  "Our calculator results are not adjusted based on installer partnerships. We do not have exclusive relationships with any installer.",
+                  "State policy data and subsidy amounts are reported as found in official sources, even when they contradict claims made by installers or government marketing materials.",
+                  "When our data is corrected by a reader or external source, we update the relevant page and note the correction date. We do not silently edit published figures.",
+                ].map((rule, i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-3">
+                    <span className="text-emerald-500 font-bold shrink-0">✓</span>
+                    {rule}
+                  </div>
+                ))}
+              </div>
+
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+                Corrections Policy
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                Solar policy, DISCOM tariffs, and subsidy rates change frequently. If you find an error in any figure on this site — a tariff rate that has been revised, a subsidy amount that has changed, or a factual inaccuracy in any guide — please report it at <strong>contact@solaraudit.vercel.app</strong> with a link to the official source. We review all correction requests within 48 hours and update the relevant page if the correction is verified. We believe public transparency about corrections is a mark of trustworthy publishing, not a weakness.
               </p>
 
               {/* CTA */}

@@ -9,6 +9,9 @@ export interface GuideArticle {
     toc: { id: string; label: string }[];
     faqs: { q: string; a: string }[];
     relatedSlugs: string[];
+    author: string;
+    authorTitle: string;
+    reviewedDate: string;
 }
 
 export const guideArticles: GuideArticle[] = [
@@ -36,6 +39,9 @@ export const guideArticles: GuideArticle[] = [
             { q: "Can tenants apply for the subsidy?", a: "No. The electricity connection must be in the applicant's name. Tenants cannot apply unless the connection is transferred to them." },
         ],
         relatedSlugs: ["net-metering-explained", "solar-roi-calculator-guide"],
+        author: "Nitish G",
+        authorTitle: "Solar Energy Analyst & MNRE Policy Researcher",
+        reviewedDate: "April 2026",
     },
     {
         slug: "solar-panel-types-india",
@@ -59,6 +65,9 @@ export const guideArticles: GuideArticle[] = [
             { q: "Which panel type lasts longer?", a: "Both types have a 25-year warranty, but Mono-PERC panels degrade slightly slower at 0.5% per year compared to 0.7% for polycrystalline." },
         ],
         relatedSlugs: ["solar-inverter-buying-guide", "solar-panel-maintenance"],
+        author: "Nitish G",
+        authorTitle: "Solar Energy Analyst & Hardware Specialist",
+        reviewedDate: "April 2026",
     },
     {
         slug: "net-metering-explained",
@@ -82,6 +91,9 @@ export const guideArticles: GuideArticle[] = [
             { q: "Can I sell solar power back to the grid?", a: "Under net metering, excess generation is adjusted against your bill. Under gross metering (available in some states), all power is sold at a feed-in tariff rate." },
         ],
         relatedSlugs: ["pm-surya-ghar-subsidy-2026", "solar-roi-calculator-guide"],
+        author: "Nitish G",
+        authorTitle: "Renewable Energy Policy Analyst",
+        reviewedDate: "April 2026",
     },
     {
         slug: "solar-inverter-buying-guide",
@@ -105,6 +117,9 @@ export const guideArticles: GuideArticle[] = [
             { q: "What size inverter do I need for a 3kW system?", a: "For a 3kW panel array, choose a 3kW or 3.5kW inverter. Slight oversizing (10–15%) accounts for peak generation and reduces clipping losses." },
         ],
         relatedSlugs: ["solar-panel-types-india", "solar-panel-maintenance"],
+        author: "Nitish G",
+        authorTitle: "Solar Energy Analyst & Hardware Specialist",
+        reviewedDate: "April 2026",
     },
     {
         slug: "solar-panel-maintenance",
@@ -128,6 +143,9 @@ export const guideArticles: GuideArticle[] = [
             { q: "What time of day should I clean panels?", a: "Clean early morning (before 8 AM) or late evening when panels are cool. Cleaning hot panels with cold water can cause thermal shock and micro-cracks." },
         ],
         relatedSlugs: ["solar-panel-types-india", "solar-inverter-buying-guide"],
+        author: "Nitish G",
+        authorTitle: "Solar Systems & Maintenance Analyst",
+        reviewedDate: "April 2026",
     },
     {
         slug: "solar-roi-calculator-guide",
@@ -151,5 +169,35 @@ export const guideArticles: GuideArticle[] = [
             { q: "Is solar ROI better with or without a battery?", a: "Without battery, ROI is significantly better because battery costs add ₹60,000–₹1,20,000 to the system. Grid-tied systems with net metering offer the best financial returns." },
         ],
         relatedSlugs: ["pm-surya-ghar-subsidy-2026", "net-metering-explained"],
+        author: "Nitish G",
+        authorTitle: "Solar Finance & ROI Analyst",
+        reviewedDate: "April 2026",
+    },
+    {
+        slug: "solar-installation-checklist-india",
+        title: "Solar Installation Checklist India 2026: The Complete Guide",
+        metaDescription: "Everything you need to do before, during, and after rooftop solar installation in India. 10-point site survey, 8-document checklist, 7-step vendor vetting, and 25 questions to ask your installer.",
+        lastUpdated: "April 2026",
+        readTime: "14 min",
+        category: "Installation",
+        heroSubtitle: "The questions you forget to ask before installation are the ones that cost you most after. This complete checklist covers every step from first phone call to commissioning day.",
+        toc: [
+            { id: "before-you-begin", label: "Before You Begin" },
+            { id: "site-survey-checklist", label: "Site Survey Checklist" },
+            { id: "documents-checklist", label: "Documents to Prepare" },
+            { id: "vendor-vetting", label: "How to Vet an Installer" },
+            { id: "post-installation", label: "Post-Installation Checklist" },
+            { id: "questions-for-installer", label: "25 Questions to Ask" },
+        ],
+        faqs: [
+            { q: "How long does a residential solar installation take from start to finish?", a: "The physical installation takes 1–3 days for a standard 3–5kW residential system. However, the full process from application to net metering activation typically takes 2–3 months. The longest steps are DISCOM feasibility approval (7–15 working days) and net meter replacement (15–30 working days). Plan accordingly — do not expect to be generating and exporting in your first month." },
+            { q: "Can I negotiate the price with a solar installer?", a: "Yes, and you should. Standard negotiation in the Indian solar market typically yields 5–15% reduction from the first quote. However, never negotiate on component quality — always negotiate on labour costs, cable runs, and secondary items. An installer who drops their panel or inverter specification to match your budget will cost you more in lost generation over 25 years than you saved upfront." },
+            { q: "What is the maximum system size I can install on a residential connection?", a: "Under PM Surya Ghar 2026, residential installations up to 10kW are eligible for the central subsidy. However, your system cannot exceed your sanctioned load from the DISCOM. If your sanctioned load is 5kW, you cannot install more than 5kW and still qualify for net metering. Check your electricity bill for your sanctioned load before deciding on system size." },
+            { q: "Who is responsible if my roof leaks after solar installation?", a: "Your solar installer is responsible for any roof leaks at mounting bolt penetration points, provided you have a written warranty clause covering roof waterproofing. Always insist on a 2–3 year waterproofing warranty in writing before signing the installation contract. Without this clause, you may have difficulty establishing liability if a leak appears several months after installation." },
+        ],
+        relatedSlugs: ["pm-surya-ghar-subsidy-2026", "solar-roi-calculator-guide"],
+        author: "Nitish G",
+        authorTitle: "Solar Energy Analyst & Installation Specialist",
+        reviewedDate: "April 2026",
     },
 ];

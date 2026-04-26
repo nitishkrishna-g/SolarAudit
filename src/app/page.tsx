@@ -198,16 +198,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION 2: THE AFFILIATE REVENUE GRID */}
-        <section className="py-12 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 relative z-10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-slate-900 dark:text-white">
-              Essential Gear for Solar Owners
-            </h2>
-            <AffiliateGrid />
-          </div>
-        </section>
-
         {/* SECTION: PROBLEM AGITATION */}
         <section className="py-16 bg-slate-50 dark:bg-slate-950 relative z-10">
           <div className="container mx-auto px-4 max-w-4xl text-center">
@@ -320,14 +310,32 @@ export default function Home() {
 
         {/* SECTION 5: FAQ */}
         <HomeFAQ />
-      </main>
 
-      {/* GUIDES TEASER SECTION */}
-      <GuidesTeaser />
+        {/* GUIDES TEASER SECTION */}
+        <GuidesTeaser />
+
+        {/* SECTION: ESSENTIAL GEAR — placed last to prioritise educational content */}
+        <section className="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 relative z-10">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-4">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">
+                Curated by our editorial team
+              </span>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+                Essential Gear for Solar Owners
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto text-sm">
+                Products independently reviewed for Indian weather conditions. Affiliate links help keep our calculator free.
+              </p>
+            </div>
+            <AffiliateGrid />
+          </div>
+        </section>
+      </main>
 
       <Footer />
 
-      {/* Page-specific JSON-LD: WebSite + FAQPage */}
+      {/* Page-specific JSON-LD: WebSite + FAQPage — placed after body content */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -231,6 +231,16 @@ export default async function StatePage({ params }: PageProps) {
                                 )}
                             </p>
 
+                            {/* 1b. State Policy Brief */}
+                            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 mb-10 not-prose">
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                                    {stateData.name} Solar Policy & Incentive Brief (2026)
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                                    {stateData.statePolicyBrief}
+                                </p>
+                            </div>
+
                             {/* 2. Cost Breakdown Table */}
                             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">
                                 Real Cost Breakdown for {stateData.name}
@@ -309,6 +319,35 @@ export default async function StatePage({ params }: PageProps) {
                                     }} />
                                 ))}
                             </ol>
+
+                            {/* 3b. Real Cost Example */}
+                            <div className="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800/50 rounded-2xl p-6 mb-10 not-prose">
+                                <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-3">
+                                    Worked Example: Real Installation in {stateData.name}
+                                </h3>
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                                    {stateData.realCostExample}
+                                </p>
+                            </div>
+
+                            {/* 3c. Contact / Who to Call */}
+                            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 mb-10 not-prose">
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Who to Contact in {stateData.name}</h3>
+                                <div className="space-y-3">
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-emerald-500 font-bold text-sm shrink-0 mt-0.5">DISCOM</span>
+                                        <p className="text-sm text-slate-600 dark:text-slate-400">{stateData.contactInfo.discomHelpline}</p>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-emerald-500 font-bold text-sm shrink-0 mt-0.5">MNRE</span>
+                                        <p className="text-sm text-slate-600 dark:text-slate-400">{stateData.contactInfo.mnreHelpline} (PM Surya Ghar Helpline)</p>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-emerald-500 font-bold text-sm shrink-0 mt-0.5">Nodal Agency</span>
+                                        <p className="text-sm text-slate-600 dark:text-slate-400">{stateData.contactInfo.nodalAgency}</p>
+                                    </div>
+                                </div>
+                            </div>
 
                             {/* 4. Internal Link CTA */}
                             <div className="bg-emerald-50 dark:bg-emerald-900/10 p-8 rounded-2xl border border-emerald-100 dark:border-emerald-800/30 not-prose text-center">

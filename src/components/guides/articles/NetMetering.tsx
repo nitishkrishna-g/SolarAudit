@@ -129,6 +129,82 @@ export function NetMetering() {
                     </motion.div>
                 ))}
             </motion.div>
+
+            <SectionHeading id="reading-your-bill" emoji="🧾" title="How to Read Your First Net Metering Bill" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    Your first bill after net metering activation will look very different from your previous electricity bills. Many homeowners panic when they see unfamiliar line items — understanding each field prevents costly disputes and helps you verify that the DISCOM has applied your credits correctly.
+                </p>
+            </Reveal>
+            <DarkInfoPanel title="Sample Net Metering Bill Breakdown (Maharashtra, MSEDCL)">
+                <div className="space-y-2 text-sm">
+                    <div className="flex justify-between border-b border-white/10 pb-2 font-bold text-white">
+                        <span>Bill Component</span><span>Reading / Amount</span>
+                    </div>
+                    {[
+                        ["Import Register (units drawn from grid)", "220 units", "text-white"],
+                        ["Export Register (units sent to grid)", "−180 units", "text-emerald-400"],
+                        ["Net Consumption (import − export)", "40 units", "text-white"],
+                        ["Energy Charge (40 × ₹11.00)", "₹440", "text-white"],
+                        ["Fixed / Demand Charge", "₹250", "text-slate-400"],
+                        ["Electricity Duty (@ 16%)", "₹111", "text-slate-400"],
+                        ["Previous month credit carry-forward", "−₹0", "text-slate-400"],
+                        ["Total Bill Payable", "₹801", "text-emerald-300 font-bold text-base"],
+                    ].map(([label, value, color]) => (
+                        <div key={label} className="flex justify-between py-1">
+                            <span className="text-slate-300 text-xs">{label}</span>
+                            <span className={`text-xs font-medium ${color}`}>{value}</span>
+                        </div>
+                    ))}
+                    <div className="pt-2 text-xs text-slate-400 border-t border-white/10">
+                        Without solar: this household&apos;s bill would have been approx ₹2,690/month. Net saving: ₹1,889/month.
+                    </div>
+                </div>
+            </DarkInfoPanel>
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4 mt-6">
+                    <strong className="text-slate-900 dark:text-white">Key things to verify on your first net-metered bill:</strong> Confirm that the export reading has actually been recorded (some older meters need a manual activation by the DISCOM engineer). Check that the surplus is being carried forward at the correct unit rate, not converted to rupees prematurely. If your DISCOM charges a separate &quot;renewable energy surcharge&quot; or &quot;solar banking fee,&quot; this is state-specific and should be declared in your state&apos;s tariff order — file a complaint if any undisclosed charge appears.
+                </p>
+            </Reveal>
+
+            <SectionHeading id="gross-vs-net" emoji="⚖️" title="Gross Metering vs Net Metering: Which is Better?" />
+            <Reveal>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    While net metering is the dominant framework, some states and certain consumer categories are offered <strong className="text-slate-900 dark:text-white">gross metering</strong> — where all solar power generated is sold to the grid at a feed-in tariff (FiT), and you buy all your household electricity separately at the retail rate. Here is when each makes sense for an Indian residential household:
+                </p>
+            </Reveal>
+            <Reveal>
+                <div className="overflow-x-auto mb-8">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100 dark:bg-slate-800">
+                                {["Factor", "Net Metering", "Gross Metering"].map((h) => (
+                                    <th key={h} className="p-3 text-left border border-slate-200 dark:border-slate-800 font-bold text-slate-900 dark:text-white">{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody className="text-slate-600 dark:text-slate-400">
+                            {[
+                                ["Solar revenue per unit", "₹7–11 (retail tariff offset)", "₹2–4 (FiT rate)"],
+                                ["Daytime self-consumption", "Directly offsets retail rate", "Sold first, then bought back"],
+                                ["High-consumption households", "Excellent — offsets high slabs", "Poor — pays retail for all imports"],
+                                ["Low-consumption households", "Good — credits carry forward", "May be better if FiT > self-use offset"],
+                                ["Bill complexity", "Moderate (2 registers)", "High (2 separate meters)"],
+                                ["Who benefits most", "Households consuming >400 units/month", "Households consuming <150 units/month"],
+                            ].map(([factor, net, gross]) => (
+                                <tr key={factor} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 font-medium">{factor}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400">{net}</td>
+                                    <td className="p-3 border border-slate-200 dark:border-slate-800">{gross}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </Reveal>
+            <InfoBox variant="info">
+                For the overwhelming majority of Indian households — those consuming 200–600 units per month — net metering is the financially superior choice. Gross metering only makes sense in niche scenarios where the household uses very little electricity during daylight hours (e.g., a vacation home or a property under renovation).
+            </InfoBox>
         </>
     );
 }

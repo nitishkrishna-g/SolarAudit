@@ -20,12 +20,14 @@ interface PageProps {
 export async function generateStaticParams() {
     const params = [];
     for (const state of solarData) {
-        if (state.cities && state.cities.length > 0) {
+        // Prefer rich cityData if available
+        if (state.cityData && state.cityData.length > 0) {
+            for (const city of state.cityData) {
+                params.push({ state: state.slug, city: city.slug });
+            }
+        } else if (state.cities && state.cities.length > 0) {
             for (const city of state.cities) {
-                params.push({
-                    state: state.slug,
-                    city: city.toLowerCase().replace(/ /g, "-"),
-                });
+                params.push({ state: state.slug, city: city.toLowerCase().replace(/ /g, "-") });
             }
         }
     }
@@ -60,11 +62,15 @@ export default async function CityPage({ params }: PageProps) {
         notFound();
     }
 
-    const city = stateData.cities.find(c => c.toLowerCase().replace(/ /g, "-") === cityParam);
+    // Prefer rich cityData lookup, fall back to simple cities array
+    const richCity = stateData.cityData?.find(c => c.slug === cityParam);
+    const city = richCity?.name ?? stateData.cities.find(c => c.toLowerCase().replace(/ /g, "-") === cityParam);
 
     if (!city) {
         notFound();
     }
+
+    const cityBlurb = richCity?.blurb ?? null;
 
     return (
         <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans selection:bg-emerald-500/30">
@@ -165,6 +171,16 @@ export default async function CityPage({ params }: PageProps) {
                                     <div className="w-full h-[100px] bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 dark:border-slate-700 rounded mb-8 flex items-center justify-center text-slate-400 text-sm">
                                         AdSense In-Article
                                     </div>
+
+                                    {/* City-specific unique content */}
+                                    {cityBlurb && (
+                                        <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 mb-8 not-prose">
+                                            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                                                Solar in {city}: Local Conditions & What to Expect
+                                            </h2>
+                                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{cityBlurb}</p>
+                                        </div>
+                                    )}
 
                                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Solar Cost Breakdown for {city}</h3>
 
